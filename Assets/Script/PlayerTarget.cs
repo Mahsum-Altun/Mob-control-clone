@@ -56,13 +56,11 @@ public class PlayerTarget : MonoBehaviour
         {
             if (tag == "Small")
             {
-                StartCoroutine("Xspawn");
-                Debug.Log("small");
+                StartCoroutine("XspawnSmall");
             }
             else if (tag == "Big")
             {
                 StartCoroutine("XspawnBig");
-                Debug.Log("big");
             }
         }
     }
@@ -78,7 +76,7 @@ public class PlayerTarget : MonoBehaviour
     }
     IEnumerator XspawnBig()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         GameObject myBig1 = Instantiate(big, big.transform.position, big.transform.rotation);
         GameObject myBig2 = Instantiate(big, big.transform.position, big.transform.rotation);
         GameObject myBig3 = Instantiate(big, big.transform.position, big.transform.rotation);

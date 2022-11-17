@@ -17,9 +17,9 @@ public class InputControl : MonoBehaviour
 
     private void Start()
     {
-        ballFireSound = GetComponent<AudioSource>();
-        ballAnimator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        ballFireSound = transform.GetChild(0).GetComponent<AudioSource>();
+        ballAnimator = transform.GetChild(0).GetComponent<Animator>();
+        rb = transform.GetChild(0).GetComponent<Rigidbody>();
     }
     private void LateUpdate()
     {

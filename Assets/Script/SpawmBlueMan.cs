@@ -11,9 +11,13 @@ public class SpawmBlueMan : MonoBehaviour
     public GameObject parent;
     private NavMeshAgent agent;
     EnergyBarAttack energyBarAttack;
+
+    private void Start() {
+        energyBarAttack = GetComponent<EnergyBarAttack>();
+    }
     public void Spawn()
     {
-        if (energyBarAttack.currentEnergy != 100)
+        if (energyBarAttack.currentEnergy != 0)
         {
             GameObject mySmall = Instantiate(small, spawnPoint.transform.position, spawnPoint.transform.rotation);
             mySmall.transform.parent = parent.transform;
@@ -21,7 +25,7 @@ public class SpawmBlueMan : MonoBehaviour
             agent.speed = 40f;
             StartCoroutine("AgentSpeed");
         }
-        else
+        else if(energyBarAttack.currentEnergy == 0)
         {
             GameObject myBig = Instantiate(big, spawnPoint.transform.position, spawnPoint.transform.rotation);
             myBig.transform.parent = parent.transform;
