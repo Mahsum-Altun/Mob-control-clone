@@ -10,14 +10,18 @@ TagManager:
   - Road
   - Road 2
   - Road 3
-  - Home 1
-  - Home 2
-  - Home 3
   - Big
   - Small
   - X4
   - X3
   - X2
+  - Small X2
+  - Big X2
+  - Small No X
+  - Big No X
+  - X4 Home1
+  - waypoints
+  - Home
   layers:
   - Default
   - TransparentFX

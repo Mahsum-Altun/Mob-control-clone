@@ -17,6 +17,9 @@ public class PlayerTarget : MonoBehaviour
     public GameObject parent;
     public GameObject small;
     public GameObject big;
+    public float halfWidth;
+    public ParticleSystem deathParticles;
+    ScoreHome scoreHome;
 
     private void Start()
     {
@@ -52,36 +55,115 @@ public class PlayerTarget : MonoBehaviour
         {
             agent.SetDestination(home3.transform.position);
         }
-        if (other.gameObject.tag == "X4 Home1" || other.gameObject.tag == "X4 Home2" || other.gameObject.tag == "X4 Home3")
+        if (other.gameObject.tag == "X4")
+        {
+            if (tag == "Small" || tag == "Small X2")
+            {
+                tag = "Small No X";
+                StartCoroutine("X4spawnSmall");
+            }
+            else if (tag == "Big" || tag == "Big X2")
+            {
+                tag = "Big No X";
+                StartCoroutine("X4spawnBig");
+            }
+        }
+        else if (other.gameObject.tag == "X3")
+        {
+            if (tag == "Small" || tag == "Small X2")
+            {
+                tag = "Small No X";
+                StartCoroutine("X3spawnSmall");
+            }
+            else if (tag == "Big" || tag == "Big X2")
+            {
+                tag = "Big No X";
+                StartCoroutine("X3spawnBig");
+            }
+        }
+        else if (other.gameObject.tag == "X2")
         {
             if (tag == "Small")
             {
-                StartCoroutine("XspawnSmall");
+                tag = "Small X2";
+                StartCoroutine("X2spawnSmall");
             }
             else if (tag == "Big")
             {
-                StartCoroutine("XspawnBig");
+                tag = "Big X2";
+                StartCoroutine("X2spawnBig");
             }
         }
+        if (other.gameObject.tag == "Home")
+        {
+            DeathWithParticles();
+            scoreHome = other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>();
+            scoreHome.scoreValue -= 1;
+        }
     }
-    IEnumerator XspawnSmall()
+    IEnumerator X4spawnSmall()
     {
-        yield return new WaitForSeconds(0.3f);
-        GameObject mySmall1 = Instantiate(small, small.transform.position, small.transform.rotation);
-        GameObject mySmall2 = Instantiate(small, small.transform.position, small.transform.rotation);
-        GameObject mySmall3 = Instantiate(small, small.transform.position, small.transform.rotation);
+        yield return null;
+        GameObject mySmall1 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
+        GameObject mySmall2 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
+        GameObject mySmall3 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
         mySmall1.transform.parent = parent.transform;
+        mySmall1.tag = "Small No X";
         mySmall2.transform.parent = parent.transform;
+        mySmall2.tag = "Small No X";
         mySmall3.transform.parent = parent.transform;
+        mySmall3.tag = "Small No X";
     }
-    IEnumerator XspawnBig()
+    IEnumerator X4spawnBig()
     {
-        yield return new WaitForSeconds(0.5f);
-        GameObject myBig1 = Instantiate(big, big.transform.position, big.transform.rotation);
-        GameObject myBig2 = Instantiate(big, big.transform.position, big.transform.rotation);
-        GameObject myBig3 = Instantiate(big, big.transform.position, big.transform.rotation);
+        yield return null;
+        GameObject myBig1 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
+        GameObject myBig2 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
+        GameObject myBig3 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
         myBig1.transform.parent = parent.transform;
+        myBig1.tag = "Big No X";
         myBig2.transform.parent = parent.transform;
+        myBig2.tag = "Big No X";
         myBig3.transform.parent = parent.transform;
+        myBig3.tag = "Big No X";
+    }
+    IEnumerator X3spawnSmall()
+    {
+        yield return null;
+        GameObject mySmall1 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
+        GameObject mySmall2 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
+        mySmall1.transform.parent = parent.transform;
+        mySmall1.tag = "Small No X";
+        mySmall2.transform.parent = parent.transform;
+        mySmall2.tag = "Small No X";
+    }
+    IEnumerator X3spawnBig()
+    {
+        yield return null;
+        GameObject myBig1 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
+        GameObject myBig2 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
+        myBig1.transform.parent = parent.transform;
+        myBig1.tag = "Big No X";
+        myBig2.transform.parent = parent.transform;
+        myBig2.tag = "Big No X";
+    }
+    IEnumerator X2spawnSmall()
+    {
+        yield return null;
+        GameObject mySmall1 = Instantiate(small, new Vector3(small.transform.position.x + halfWidth, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
+        mySmall1.transform.parent = parent.transform;
+        mySmall1.tag = "Small X2";
+    }
+    IEnumerator X2spawnBig()
+    {
+        yield return null;
+        GameObject myBig1 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
+        myBig1.transform.parent = parent.transform;
+        myBig1.tag = "Big X2";
+    }
+    private void DeathWithParticles()
+    {
+        Instantiate(deathParticles, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
