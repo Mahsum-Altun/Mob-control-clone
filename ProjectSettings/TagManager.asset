@@ -22,14 +22,16 @@ TagManager:
   - X4 Home1
   - waypoints
   - Home
+  - Home 1
+  - Home 3
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Big
   - Water
   - UI
-  - 
+  - Small
   - 
   - 
   - 

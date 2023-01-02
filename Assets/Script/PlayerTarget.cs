@@ -19,7 +19,6 @@ public class PlayerTarget : MonoBehaviour
     public GameObject big;
     public float halfWidth;
     public ParticleSystem deathParticles;
-    ScoreHome scoreHome;
 
     private void Start()
     {
@@ -96,9 +95,31 @@ public class PlayerTarget : MonoBehaviour
         }
         if (other.gameObject.tag == "Home")
         {
-            DeathWithParticles();
-            scoreHome = other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>();
-            scoreHome.scoreValue -= 1;
+            if (gameObject.layer == 6)
+            {
+                DeathWithParticlesSmall();
+                other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
+                other.transform.GetComponent<HomeAnimation>().HomeAttack();
+                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue == 0)
+                {
+                    other.transform.root.GetChild(0).GetChild(1).GetComponent<MissionCompleted>().missionFinished = true;
+                    other.transform.root.GetChild(0).GetChild(1).transform.parent = null;
+                    other.transform.parent.GetComponent<HomeDestroy>().Destroy();
+                }
+            }
+            else if (gameObject.layer == 3)
+            {
+                DeathWithParticlesBig();
+                other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
+                other.transform.GetComponent<HomeAnimation>().HomeAttack();
+                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue == 0)
+                {
+                    other.transform.root.GetChild(0).GetChild(1).GetComponent<MissionCompleted>().missionFinished = true;
+                    other.transform.root.GetChild(0).GetChild(1).transform.parent = null;
+                    other.transform.parent.GetComponent<HomeDestroy>().Destroy();
+                }
+            }
+
         }
     }
     IEnumerator X4spawnSmall()
@@ -161,8 +182,19 @@ public class PlayerTarget : MonoBehaviour
         myBig1.transform.parent = parent.transform;
         myBig1.tag = "Big X2";
     }
-    private void DeathWithParticles()
+    private void DeathWithParticlesSmall()
     {
+        Instantiate(deathParticles, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+    private void DeathWithParticlesBig()
+    {
+        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        StartCoroutine("BigScale");
+    }
+    IEnumerator BigScale()
+    {
+        yield return new WaitForSeconds(.5f);
         Instantiate(deathParticles, transform.position, transform.rotation);
         Destroy(gameObject);
     }

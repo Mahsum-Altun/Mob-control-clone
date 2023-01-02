@@ -9,7 +9,6 @@ public class BallWalk : MonoBehaviour
     public Transform[] wayPoints;
     int wayPoint = 0;
     public bool coroutine = false;
-    public bool loopWayPoints = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +20,17 @@ public class BallWalk : MonoBehaviour
     {
         if (coroutine)
         {
+            GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = false;
             agent.SetDestination(wayPoints[wayPoint].position);
             coroutine = false;
             if (Vector3.Distance(wayPoints[wayPoint].position, transform.position) < 5)
             {
                 wayPoint++;
             }
+        }
+        else
+        {
+            GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = true;
         }
     }
     private void OnTriggerStay(Collider other)
