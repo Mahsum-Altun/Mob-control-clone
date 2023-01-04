@@ -16,13 +16,17 @@ public class MissionCompleted : MonoBehaviour
     public void MissionFinished()
     {
         transform.Translate(-Vector3.up * speed * Time.deltaTime);
+    }
+    public void NexMission()
+    {
         StartCoroutine("DestroyLevel");
     }
     IEnumerator DestroyLevel()
     {
-        yield return new WaitForSeconds(2.5f);
         GameObject.Find("Ball Parent").GetComponent<BallWalk>().coroutine = true;
-        yield return new WaitForSeconds(3f);
+        GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = false;
+        GameObject.Find("Blue And Yellow Parent").GetComponent<TransformEx>().DestroyChild();
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 }

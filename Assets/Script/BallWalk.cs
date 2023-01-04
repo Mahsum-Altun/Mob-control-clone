@@ -20,7 +20,6 @@ public class BallWalk : MonoBehaviour
     {
         if (coroutine)
         {
-            GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = false;
             agent.SetDestination(wayPoints[wayPoint].position);
             coroutine = false;
             if (Vector3.Distance(wayPoints[wayPoint].position, transform.position) < 5)
@@ -28,16 +27,16 @@ public class BallWalk : MonoBehaviour
                 wayPoint++;
             }
         }
-        else
-        {
-            GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = true;
-        }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "waypoints")
         {
             coroutine = true;
+        }
+        if (other.gameObject.tag == "TouchControl")
+        {
+            GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = true;
         }
     }
 }

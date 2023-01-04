@@ -8,6 +8,7 @@ public class HomeDestroy : MonoBehaviour
     public void Destroy()
     {
         Instantiate(deathParticles, transform.position, transform.rotation);
-        Destroy(gameObject);
+        GameObject.Find("Ball and canvas").GetComponent<Transform>().localPosition = new Vector3(0, 0, 0);
+        this.gameObject.SetActive(false);
     }
 }

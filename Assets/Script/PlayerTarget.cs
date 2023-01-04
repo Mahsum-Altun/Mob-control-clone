@@ -39,6 +39,14 @@ public class PlayerTarget : MonoBehaviour
         {
             agent.SetDestination(home2.transform.position);
         }
+        if (home2.transform.GetChild(0).GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
+        {
+            homeDestroy2 = true;
+        }
+        if (home3.transform.GetChild(0).GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
+        {
+            homeDestroy3 = true;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -95,16 +103,29 @@ public class PlayerTarget : MonoBehaviour
         }
         if (other.gameObject.tag == "Home")
         {
+
             if (gameObject.layer == 6)
             {
                 DeathWithParticlesSmall();
                 other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
                 other.transform.GetComponent<HomeAnimation>().HomeAttack();
-                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue == 0)
+                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
                 {
-                    other.transform.root.GetChild(0).GetChild(1).GetComponent<MissionCompleted>().missionFinished = true;
-                    other.transform.root.GetChild(0).GetChild(1).transform.parent = null;
+                    if (homeDestroy2 == true && homeDestroy3 == true)
+                    {
+                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().missionFinished = true;
+                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().NexMission();
+                    }
                     other.transform.parent.GetComponent<HomeDestroy>().Destroy();
+                    if (GameObject.Find("Mission Completed 1") == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().missionFinished = true;
+                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().NexMission();
+                    }
                 }
             }
             else if (gameObject.layer == 3)
@@ -112,11 +133,23 @@ public class PlayerTarget : MonoBehaviour
                 DeathWithParticlesBig();
                 other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
                 other.transform.GetComponent<HomeAnimation>().HomeAttack();
-                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue == 0)
+                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
                 {
-                    other.transform.root.GetChild(0).GetChild(1).GetComponent<MissionCompleted>().missionFinished = true;
-                    other.transform.root.GetChild(0).GetChild(1).transform.parent = null;
+                    if (homeDestroy2 == true && homeDestroy3 == true)
+                    {
+                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().missionFinished = true;
+                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().NexMission();
+                    }
                     other.transform.parent.GetComponent<HomeDestroy>().Destroy();
+                    if (GameObject.Find("Mission Completed 1") == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().missionFinished = true;
+                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().NexMission();
+                    }
                 }
             }
 
