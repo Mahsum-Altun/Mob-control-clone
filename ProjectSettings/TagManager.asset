@@ -7,9 +7,6 @@ TagManager:
   - Enemy
   - Enemy Big
   - FxTemporaire
-  - Road
-  - Road 2
-  - Road 3
   - Big
   - Small
   - X4
@@ -22,8 +19,6 @@ TagManager:
   - X4 Home1
   - waypoints
   - Home
-  - Home 1
-  - Home 3
   - TouchControl
   layers:
   - Default

@@ -31240,3 +31240,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd0f3e4262f85d64bbf97067bd91725a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticles: {fileID: 0}

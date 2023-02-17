@@ -7,61 +7,65 @@ using UnityEngine.AI;
 public class PlayerTarget : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public GameObject home1;
-    public GameObject home2;
-    public GameObject home3;
-    public GameObject homeParent;
-    public bool homeDestroy2 = false;
-    public bool homeDestroy3 = false;
-    public GameObject spawnPoint;
-    public GameObject parent;
+    private GameObject parent;
     public GameObject small;
     public GameObject big;
     public float halfWidth;
     public ParticleSystem deathParticles;
+    private GameObject[] home;
+    private Transform[] homeTransform;
 
+    private void Awake()
+    {
+        home = GameObject.FindGameObjectsWithTag("Home");
+        homeTransform = new Transform[home.Length];
+        for (int i = 0; i < home.Length; i++)
+         {
+             homeTransform[i] = home[i].transform;
+         }
+    }
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        homeParent = GameObject.Find("Home Parent");
-        home1 = homeParent.transform.GetChild(0).gameObject;
-        home2 = homeParent.transform.GetChild(1).gameObject;
-        home3 = homeParent.transform.GetChild(2).gameObject;
         parent = GameObject.Find("Blue And Yellow Parent");
     }
     private void Update()
     {
-        if (homeDestroy2 == true && homeDestroy3 == false)
+        ChooseTarget();
+    }
+    public void ChooseTarget()
+    {
+        float closestTargetDistance = float.MaxValue;
+        NavMeshPath path = null;
+        NavMeshPath shortestPatch = null;
+        for (int i = 0; i < homeTransform.Length; i++)
         {
-            agent.SetDestination(home3.transform.position);
+            if (homeTransform[i] == null)
+            {
+                continue;
+            }
+            path = new NavMeshPath();
+            if (NavMesh.CalculatePath(transform.position, homeTransform[i].position, agent.areaMask, path))
+            {
+                float distance = Vector3.Distance(transform.position, path.corners[0]);
+                for (int j = 1; j < path.corners.Length; j++)
+                {
+                    distance += Vector3.Distance(path.corners[j - 1], path.corners[j]);
+                }
+                if (distance < closestTargetDistance)
+                {
+                    closestTargetDistance = distance;
+                    shortestPatch = path;
+                }
+            }
         }
-        else if (homeDestroy2 == false && homeDestroy3 == true)
+        if (shortestPatch != null)
         {
-            agent.SetDestination(home2.transform.position);
-        }
-        if (home2.transform.GetChild(0).GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
-        {
-            homeDestroy2 = true;
-        }
-        if (home3.transform.GetChild(0).GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
-        {
-            homeDestroy3 = true;
+            agent.SetPath(shortestPatch);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Road")
-        {
-            agent.SetDestination(home1.transform.position);
-        }
-        else if (other.gameObject.tag == "Road 2")
-        {
-            agent.SetDestination(home2.transform.position);
-        }
-        else if (other.gameObject.tag == "Road 3")
-        {
-            agent.SetDestination(home3.transform.position);
-        }
         if (other.gameObject.tag == "X4")
         {
             if (tag == "Small" || tag == "Small X2")
@@ -109,48 +113,12 @@ public class PlayerTarget : MonoBehaviour
                 DeathWithParticlesSmall();
                 other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
                 other.transform.GetComponent<HomeAnimation>().HomeAttack();
-                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
-                {
-                    if (homeDestroy2 == true && homeDestroy3 == true)
-                    {
-                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().missionFinished = true;
-                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().NexMission();
-                    }
-                    other.transform.parent.GetComponent<HomeDestroy>().Destroy();
-                    if (GameObject.Find("Mission Completed 1") == null)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().missionFinished = true;
-                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().NexMission();
-                    }
-                }
             }
             else if (gameObject.layer == 3)
             {
                 DeathWithParticlesBig();
                 other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
                 other.transform.GetComponent<HomeAnimation>().HomeAttack();
-                if (other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue <= 0)
-                {
-                    if (homeDestroy2 == true && homeDestroy3 == true)
-                    {
-                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().missionFinished = true;
-                        GameObject.Find("Mission Completed 2").GetComponent<MissionCompleted>().NexMission();
-                    }
-                    other.transform.parent.GetComponent<HomeDestroy>().Destroy();
-                    if (GameObject.Find("Mission Completed 1") == null)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().missionFinished = true;
-                        GameObject.Find("Mission Completed 1").GetComponent<MissionCompleted>().NexMission();
-                    }
-                }
             }
 
         }
