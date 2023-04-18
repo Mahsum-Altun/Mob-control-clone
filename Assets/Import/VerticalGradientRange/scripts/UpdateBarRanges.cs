@@ -8,23 +8,29 @@
 using UnityEngine;
 using System.Collections;
 
-namespace unitycodercom_barColors
+//namespace unitycodercom_barColors
+//{
+
+public class UpdateBarRanges : MonoBehaviour
 {
 
-public class UpdateBarRanges : MonoBehaviour 
-{
+    // assign top line object here (it doesnt have to be visible object, empty gameobject is also ok)
+    public Transform topLine;
+    // assign bottom line object here (it doesnt have to be visible object, empty gameobject is also ok)
+    public Transform bottomLine;
 
-	// assign top line object here (it doesnt have to be visible object, empty gameobject is also ok)
-	public Transform topLine;
-	// assign bottom line object here (it doesnt have to be visible object, empty gameobject is also ok)
-	public Transform bottomLine;
+    private void Start()
+    {
+        topLine = GameObject.Find("TopCube").GetComponent<Transform>();
+        bottomLine = GameObject.Find("BotCube").GetComponent<Transform>();
+    }
 
-	void Update () 
-	{
-		// send our objects world Y position to shader
-		GetComponent<Renderer>().material.SetFloat("_TopLine", topLine.position.y);
-		GetComponent<Renderer>().material.SetFloat("_BottomLine", bottomLine.position.y);
-	}
+    void Update()
+    {
+        // send our objects world Y position to shader
+        GetComponent<Renderer>().material.SetFloat("_TopLine", topLine.position.y);
+        GetComponent<Renderer>().material.SetFloat("_BottomLine", bottomLine.position.y);
+    }
 }
 
-}
+//}

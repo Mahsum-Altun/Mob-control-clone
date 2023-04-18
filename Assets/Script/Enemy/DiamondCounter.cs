@@ -26,15 +26,15 @@ public class DiamondCounter : MonoBehaviour
     Vector3 targetPosition;
 
 
-    private int _c = 0;
-    public int Diamonds
+    private float _c = 0;
+    public float Diamonds
     {
         get { return _c; }
         set
         {
             _c = value;
             //update UI text whenever "Diamonds" variable is changed
-            diamondUIText.text = Diamonds.ToString();
+            diamondUIText.text = Mathf.FloorToInt(Diamonds).ToString();
         }
     }
     private void Awake()
