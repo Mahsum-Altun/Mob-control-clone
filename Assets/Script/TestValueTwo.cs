@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TestValueTwo : MonoBehaviour
 {
+    public int sceneNumber;
     public void LoadFirstScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(sceneNumber);
     }
 }

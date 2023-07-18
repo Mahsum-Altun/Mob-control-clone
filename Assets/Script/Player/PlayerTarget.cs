@@ -15,9 +15,12 @@ public class PlayerTarget : MonoBehaviour
     private GameObject[] home;
     private Transform[] homeTransform;
     GameObject canvasGoldandDiaomond;
+    DiamondCounterAnimationLevel DiamondCounterAnimationLevel;
 
     private void Awake()
     {
+        GameObject animateDiamond = GameObject.Find("Animate diamond");
+        DiamondCounterAnimationLevel = animateDiamond.GetComponent<DiamondCounterAnimationLevel>();
         canvasGoldandDiaomond = GameObject.Find("_DiamondManager_Script");
         home = GameObject.FindGameObjectsWithTag("Home");
         homeTransform = new Transform[home.Length];
@@ -110,7 +113,7 @@ public class PlayerTarget : MonoBehaviour
         if (other.gameObject.tag == "Home")
         {
             //canvasGoldandDiaomond.transform.GetChild(2).GetChild(1).GetComponent<DiamondCounter>().AddDiamond(other.transform.position, 7);
-            DiamondCounter.instance.AddDiamond(other.transform.position, 1);
+            DiamondCounterAnimationLevel.AddDiamond(transform.position, 1);
             if (gameObject.layer == 6)
             {
                 DeathWithParticlesSmall();

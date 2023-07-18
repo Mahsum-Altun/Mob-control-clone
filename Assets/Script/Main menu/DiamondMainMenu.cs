@@ -1,45 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DiamondMainMenu : MonoBehaviour
 {
-    TMPro.TMP_Text diamondUIText;
-    public float imageCounter;
-    [SerializeField] float counterSpeed;
+    //TMPro.TMP_Text diamondUIText;
     ObjectColorChange objectColorChange;
     private bool counter = false;
+    public PrefabData prefabData;
+    DiamondCounterAnimationMainMenu diamondCounterAnimationMainMenu;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        diamondUIText = GetComponent<TMPro.TMP_Text>();
-        objectColorChange = FindObjectOfType<ObjectColorChange>();
+        //diamondUIText = GetComponent<TMPro.TMP_Text>();
+        GameObject animateDiamond = GameObject.Find("Animate diamond");
+        diamondCounterAnimationMainMenu = animateDiamond.GetComponent<DiamondCounterAnimationMainMenu>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // Update is called once per frame
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 0)
+        {
+            //diamondUIText = GetComponent<TMPro.TMP_Text>();
+            objectColorChange = FindObjectOfType<ObjectColorChange>();
+            GameObject animateDiamond = GameObject.Find("Animate diamond");
+            diamondCounterAnimationMainMenu = animateDiamond.GetComponent<DiamondCounterAnimationMainMenu>();
+        }
+    }
+
     void Update()
     {
-        diamondUIText.text = Mathf.FloorToInt(imageCounter).ToString();
-        if (Input.GetMouseButton(0))
+        //diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString();
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (DiamondCounter.instance.Diamonds > 1)
+            if (Input.GetMouseButton(0))
             {
-                imageCounter -= counterSpeed * Time.deltaTime;
-                DiamondCounter.instance.Diamonds -= counterSpeed * Time.deltaTime;
-                objectColorChange.CubeMovement();
+                if (DiamondCounter.instance.Diamonds > 0)
+                {
+                    diamondCounterAnimationMainMenu.AddDiamondMainMenu();
+                }
+                else
+                {
+                    DiamondCounter.instance.Diamonds = 0;
+                }
             }
         }
-        if (imageCounter <= 0 && counter == false)
+
+        if (prefabData.imageCounter <= 0 && counter == false)
         {
-            GameObject prefab = transform.root.gameObject;
-            ObjectStack objectStack = prefab.GetComponent<ObjectStack>();
-            objectStack.ObjectColorCounter();
-            counter = true;
+            diamondCounterAnimationMainMenu.isPaused = true;
+            prefabData.imageCounter = 0;
+            StartCoroutine(PauseLoopForSeconds(1.6f));
         }
         else
         {
             counter = false;
+            diamondCounterAnimationMainMenu.isPaused = false;
         }
+
+    }
+    IEnumerator PauseLoopForSeconds(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        prefabData.imageCounter = 100;
+        GameObject prefab = transform.root.gameObject;
+        ObjectStack objectStack = prefab.GetComponent<ObjectStack>();
+        objectStack.ObjectColorCounter();
+        counter = true;
     }
 }

@@ -1357,7 +1357,7 @@ Transform:
   m_Children:
   - {fileID: 1305450777}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &134859979
 MonoBehaviour:
@@ -1706,7 +1706,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1788
+  m_Name: pb_Mesh-15146
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2049,7 +2049,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &276124817
 Mesh:
@@ -2996,7 +2996,7 @@ Transform:
   - {fileID: 1154947698}
   - {fileID: 1260256812}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &301309237
 MonoBehaviour:
@@ -3278,7 +3278,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -3366,8 +3366,60 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &435851521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435851523}
+  - component: {fileID: 435851524}
+  m_Layer: 0
+  m_Name: Animate diamond
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &435851523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435851521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -257.80185, y: 158.36655, z: 83.38279}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &435851524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435851521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8bbea74ecaf1574a8ad26d9766cac28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diamondUIText: {fileID: 1051654460}
+  animatedDiamondPrefab: {fileID: 5972244286461750342, guid: 328277320ba29834795fdad875347bf3,
+    type: 3}
+  target: {fileID: 1281616541}
+  maxDiamond: 50
+  minAnimDuration: 0.8
+  maxAnimDuration: 1.7
+  easeType: 28
 --- !u!1 &445993330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,7 +3456,7 @@ Transform:
   - {fileID: 5528060937862309267}
   - {fileID: 447871916646720399}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &479219681
 Mesh:
@@ -3740,7 +3792,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1812
+  m_Name: pb_Mesh-15170
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4367,7 +4419,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1776
+  m_Name: pb_Mesh-15134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4752,6 +4804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6863bdebaaf34499c36753f11d0dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneNumber: 0
 --- !u!114 &665211815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5432,7 +5485,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &864527895
 Mesh:
@@ -7612,7 +7665,7 @@ GameObject:
   - component: {fileID: 1051654461}
   - component: {fileID: 1051654460}
   m_Layer: 5
-  m_Name: Diamond counter
+  m_Name: Diamond text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8639,7 +8692,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1824
+  m_Name: pb_Mesh-15182
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9419,7 +9472,7 @@ GameObject:
   - component: {fileID: 1281616543}
   - component: {fileID: 1281616542}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Diamond target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9679,7 +9732,7 @@ Transform:
   - {fileID: 1736076944}
   - {fileID: 1738015357}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1300579146
 MonoBehaviour:
@@ -10087,7 +10140,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1764
+  m_Name: pb_Mesh-15122
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10949,58 +11002,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1490925377}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1542618387
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1542618389}
-  - component: {fileID: 1542618388}
-  m_Layer: 0
-  m_Name: _DiamondManager_Script
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1542618388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542618387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978f08930f250e54fb17b0770db39bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diamondUIText: {fileID: 1051654460}
-  animatedDiamondPrefab: {fileID: 5972244286461750342, guid: 328277320ba29834795fdad875347bf3,
-    type: 3}
-  target: {fileID: 1281616541}
-  maxDiamond: 50
-  minAnimDuration: 0.7
-  maxAnimDuration: 1.8
-  easeType: 28
---- !u!4 &1542618389
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542618387}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100.07661, y: 46.282707, z: -516.6498}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1566960472
 GameObject:
   m_ObjectHideFlags: 0
@@ -12818,7 +12819,7 @@ Transform:
   - {fileID: 1250381780}
   - {fileID: 612075311}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1752777400
 Mesh:
@@ -14120,7 +14121,7 @@ RectTransform:
   - {fileID: 2072734617}
   - {fileID: 1322902217}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14711,7 +14712,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1800
+  m_Name: pb_Mesh-15158
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14915,7 +14916,7 @@ Transform:
   - {fileID: 87434278}
   - {fileID: 2093154042}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1988204376
 Mesh:
@@ -15081,6 +15082,85 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1990848236
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5388340630453029969, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1281616541}
+    - target: {fileID: 5388340630453029969, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: diamondUIText
+      value: 
+      objectReference: {fileID: 1051654460}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 100.07661
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 46.282707
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -516.6498
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510504, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995302302792510510, guid: 9f392353fad2edd4ab623b7823dd4cf2,
+        type: 3}
+      propertyPath: m_Name
+      value: _DiamondManager_Script 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f392353fad2edd4ab623b7823dd4cf2, type: 3}
 --- !u!43 &2039798175
 Mesh:
   m_ObjectHideFlags: 0
@@ -16402,7 +16482,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2094490856
 MonoBehaviour:
@@ -17973,7 +18053,7 @@ PrefabInstance:
     - target: {fileID: 6237844702015315598, guid: 5da6311476dc63146b55c91605f28f9e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6237844702015315598, guid: 5da6311476dc63146b55c91605f28f9e,
         type: 3}

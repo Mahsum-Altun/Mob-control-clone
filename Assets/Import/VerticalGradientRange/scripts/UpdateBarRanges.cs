@@ -32,5 +32,3 @@ public class UpdateBarRanges : MonoBehaviour
         GetComponent<Renderer>().material.SetFloat("_BottomLine", bottomLine.position.y);
     }
 }
-
-//}

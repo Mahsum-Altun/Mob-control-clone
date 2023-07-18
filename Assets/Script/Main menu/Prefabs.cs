@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Prefabs : MonoBehaviour
 {
+    public PrefabData prefabData;
     public GameObject[] prefabs;
-    private int i = 0;
-    private DiamondMainMenu diamondMainMenu;
     private bool prefabSpawn = false;
-    private GameObject newPrefab;
+    public GameObject newPrefab;
+    private int lastIndex;
+    private Vector3 pos;
+    private Transform topColorCube;
+    public Material myCustomMaterial;
 
 
-    private void Start()
+    private void Awake()
     {
-        SpawnPrefab();
+        if (prefabData.firstSpawn == false)
+        {
+            SpawnPrefab();
+            prefabData.firstSpawn = true;
+        }
     }
 
     private void Update()
@@ -23,30 +30,61 @@ public class Prefabs : MonoBehaviour
 
     private void SpawnPrefab()
     {
-        int lastIndex = prefabs[i].transform.childCount - 1;
-        newPrefab = Instantiate(prefabs[i], transform.position, Quaternion.identity);
-        diamondMainMenu = newPrefab.transform.GetChild(lastIndex).GetChild(1).GetChild(0).GetChild(0).GetComponent<DiamondMainMenu>();
+        newPrefab = Instantiate(prefabs[prefabData.prefabIndex], transform.position, Quaternion.identity);
+        lastIndex = newPrefab.transform.childCount - 1;
+        GameObject topCube = GameObject.Find("TopCube").gameObject;
+        GameObject botCube = GameObject.Find("BotCube").gameObject;
+        GameObject prefabsControl = GameObject.Find("Prefabs counter control").gameObject;
+
+        newPrefab.transform.GetChild(prefabData.i).GetChild(1).gameObject.gameObject.SetActive(true);
+        newPrefab.transform.GetChild(prefabData.i).GetComponent<UpdateBarRanges>().enabled = true;
+
+        if (prefabData.firstSpawn == false)
+        {
+            for (int i = 0; i < prefabData.i; i++)
+            {
+                newPrefab.transform.GetChild(i).gameObject.GetComponent<Renderer>().material = myCustomMaterial;
+            }
+        }
+
+        DontDestroyOnLoad(newPrefab);
+        DontDestroyOnLoad(topCube);
+        DontDestroyOnLoad(botCube);
+        DontDestroyOnLoad(prefabsControl);
     }
 
     private void PrefabSpawn()
     {
-        if (diamondMainMenu.imageCounter <= 95 && !prefabSpawn)
+        if (prefabData.imageCounter <= 0 && !prefabSpawn && newPrefab.transform.GetChild(lastIndex).GetChild(1).gameObject.activeSelf)
         {
-            Destroy(newPrefab);
-            i++;
-            if (i >= prefabs.Length)
-            {
-                i = 0;
-            }
-            SpawnPrefab();
-            StartCoroutine(PrefabBoolSecond());
+            StartCoroutine(PrefabSpawnSecond());
             prefabSpawn = true;
         }
     }
 
     IEnumerator PrefabBoolSecond()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         prefabSpawn = false;
+    }
+    IEnumerator PrefabSpawnSecond()
+    {
+        yield return new WaitForSeconds(2.2f);
+        Destroy(newPrefab);
+        prefabData.prefabIndex++;
+        if (prefabData.prefabIndex >= prefabs.Length)
+        {
+            prefabData.prefabIndex = 0;
+        }
+        topColorCube = GameObject.Find("TopCube").GetComponent<Transform>().transform;
+        pos = topColorCube.position;
+        pos.y = 0.17f;
+        topColorCube.position = pos;
+        SpawnPrefab();
+        DiamondCounterAnimationMainMenu diamondCounterAnimationMainMenu;
+        diamondCounterAnimationMainMenu = GameObject.Find("Animate diamond").GetComponent<DiamondCounterAnimationMainMenu>();
+        diamondCounterAnimationMainMenu.PrefabReferenceIReset();
+        diamondCounterAnimationMainMenu.PrefabReference();
+        StartCoroutine(PrefabBoolSecond());
     }
 }
