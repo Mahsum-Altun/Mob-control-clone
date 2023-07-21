@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d081e26649ebb49b4481f5309c0ab2, type: 3}
   m_Name: NewPrefabData
   m_EditorClassIdentifier: 
-  prefabIndex: 4
+  prefabIndex: 0
   imageCounter: 100
   firstSpawn: 1
-  i: 2
-  cubeTransform: {fileID: 0}
+  i: 0
   currentPosition: {x: 0.56, y: 0.17, z: -0.03}

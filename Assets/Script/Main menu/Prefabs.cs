@@ -9,8 +9,7 @@ public class Prefabs : MonoBehaviour
     private bool prefabSpawn = false;
     public GameObject newPrefab;
     private int lastIndex;
-    private Vector3 pos;
-    private Transform topColorCube;
+    private GameObject topColorCube;
     public Material myCustomMaterial;
 
 
@@ -76,14 +75,13 @@ public class Prefabs : MonoBehaviour
         {
             prefabData.prefabIndex = 0;
         }
-        topColorCube = GameObject.Find("TopCube").GetComponent<Transform>().transform;
-        pos = topColorCube.position;
-        pos.y = 0.17f;
-        topColorCube.position = pos;
-        SpawnPrefab();
+        topColorCube = GameObject.Find("TopCube").GetComponent<Transform>().gameObject;
+        prefabData.currentPosition.y = 0.17f;
+        topColorCube.transform.position = prefabData.currentPosition;
         DiamondCounterAnimationMainMenu diamondCounterAnimationMainMenu;
         diamondCounterAnimationMainMenu = GameObject.Find("Animate diamond").GetComponent<DiamondCounterAnimationMainMenu>();
         diamondCounterAnimationMainMenu.PrefabReferenceIReset();
+        SpawnPrefab();
         diamondCounterAnimationMainMenu.PrefabReference();
         StartCoroutine(PrefabBoolSecond());
     }

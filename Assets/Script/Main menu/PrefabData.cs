@@ -9,7 +9,6 @@ public class PrefabData : ScriptableObject
     public int imageCounter = 100;
     public bool firstSpawn = false;
     public int i = 0;
-    public Transform cubeTransform;
     public Vector3 currentPosition;
     private void OnDisable()
     {

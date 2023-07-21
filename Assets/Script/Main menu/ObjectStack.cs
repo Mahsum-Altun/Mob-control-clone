@@ -5,12 +5,10 @@ using UnityEngine;
 public class ObjectStack : MonoBehaviour
 {
     public PrefabData prefabData;
-    private Transform topColorCube;
+    private GameObject topColorCube;
     private DiamondCounterAnimationMainMenu diamondCounterAnimationMainMenu;
     // Array representing the children of the prefab
     public Transform[] children;
-    private Vector3 pos;
-    // Variable to hold the index of the active child
 
     void Start()
     {
@@ -26,10 +24,9 @@ public class ObjectStack : MonoBehaviour
     {
         children[prefabData.i].GetChild(1).gameObject.SetActive(false);
         children[prefabData.i].GetComponent<UpdateBarRanges>().enabled = false;
-        topColorCube = GameObject.Find("TopCube").GetComponent<Transform>().transform;
-        pos = topColorCube.position;
-        pos.y = 0.17f;
-        topColorCube.position = pos;
+        topColorCube = GameObject.Find("TopCube").GetComponent<Transform>().gameObject;
+        prefabData.currentPosition.y = 0.17f;
+        topColorCube.transform.position = prefabData.currentPosition;
 
         diamondCounterAnimationMainMenu = GameObject.Find("Animate diamond").GetComponent<DiamondCounterAnimationMainMenu>();
         diamondCounterAnimationMainMenu.PrefabReferenceIPlus();

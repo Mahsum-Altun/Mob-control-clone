@@ -11,14 +11,12 @@ public class ObjectColorChange : MonoBehaviour
     private void Start()
     {
         topCube = gameObject;
-        prefabData.cubeTransform.position = prefabData.currentPosition;
+        topCube.transform.position = prefabData.currentPosition;
     }
 
     public void CubeMovement()
     {
-        prefabData.cubeTransform = topCube.transform;
-        prefabData.currentPosition = prefabData.cubeTransform.position;
         prefabData.currentPosition.y += 0.001f * cubeSpeed * Time.deltaTime;
-        prefabData.cubeTransform.position = prefabData.currentPosition;
+        topCube.transform.position = prefabData.currentPosition;
     }
 }
