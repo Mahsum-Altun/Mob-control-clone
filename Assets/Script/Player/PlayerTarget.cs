@@ -14,14 +14,12 @@ public class PlayerTarget : MonoBehaviour
     public ParticleSystem deathParticles;
     private GameObject[] home;
     private Transform[] homeTransform;
-    GameObject canvasGoldandDiaomond;
     DiamondCounterAnimationLevel DiamondCounterAnimationLevel;
 
     private void Awake()
     {
         GameObject animateDiamond = GameObject.Find("Animate diamond");
         DiamondCounterAnimationLevel = animateDiamond.GetComponent<DiamondCounterAnimationLevel>();
-        canvasGoldandDiaomond = GameObject.Find("_DiamondManager_Script");
         home = GameObject.FindGameObjectsWithTag("Home");
         homeTransform = new Transform[home.Length];
         for (int i = 0; i < home.Length; i++)
@@ -112,7 +110,6 @@ public class PlayerTarget : MonoBehaviour
         }
         if (other.gameObject.tag == "Home")
         {
-            //canvasGoldandDiaomond.transform.GetChild(2).GetChild(1).GetComponent<DiamondCounter>().AddDiamond(other.transform.position, 7);
             DiamondCounterAnimationLevel.AddDiamond(transform.position, 1);
             if (gameObject.layer == 6)
             {
@@ -128,18 +125,18 @@ public class PlayerTarget : MonoBehaviour
             }
 
         }
-        // if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Enemy Big")
-        // {
-        //     canvasGoldandDiaomond.transform.GetChild(3).GetChild(1).GetComponent<GoldCounter>().goldValue += 1;
-        //     if (gameObject.layer == 6)
-        //     {
-        //         DeathWithParticlesSmall();
-        //     }
-        //     else if (gameObject.layer == 3)
-        //     {
-        //         DeathWithParticlesBig();
-        //     }
-        // }
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Enemy Big")
+        {
+            var goldCounter = GameObject.Find("Gold counter").GetComponent<GoldCounter>().goldValue += 1;
+            if (gameObject.layer == 6)
+            {
+                DeathWithParticlesSmall();
+            }
+            else if (gameObject.layer == 3)
+            {
+                DeathWithParticlesBig();
+            }
+        }
     }
     IEnumerator X4spawnSmall()
     {

@@ -28,7 +28,6 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
     Vector3 targetPosition;
 
 
-    int counterSpeed = 30;
     public bool isPaused = false;
     public TMPro.TMP_Text diamondUIText;
 

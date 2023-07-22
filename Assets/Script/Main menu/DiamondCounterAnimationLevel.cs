@@ -28,10 +28,12 @@ public class DiamondCounterAnimationLevel : MonoBehaviour
 
     private void Awake()
     {
-        targetPosition = target.position;
-
         //Prepare Pool
         PrepareDiamonds();
+    }
+    private void Update()
+    {
+        targetPosition = target.position;
     }
 
     void PrepareDiamonds()
@@ -72,6 +74,7 @@ public class DiamondCounterAnimationLevel : MonoBehaviour
 
                     DiamondCounter.instance.Diamonds++;
                     diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString();
+                    GameObject.Find("Diamond").GetComponent<DiamondAnimation>().DiamondShake();
                 });
             }
         }
