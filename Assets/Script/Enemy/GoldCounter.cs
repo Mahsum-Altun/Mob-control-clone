@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class GoldCounter : MonoBehaviour
 {
-    public int goldValue = 0;
-    TMPro.TMP_Text gold;
-    // Start is called before the first frame update
-    void Start()
+    public static GoldCounter instance;
+    private int _c = 0;
+    public int Gold
     {
-        gold = GetComponent<TMPro.TMP_Text>();
+        get { return _c; }
+        set
+        {
+            _c = value;
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        gold.text = "" + goldValue;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class InputControl : MonoBehaviour
 {
     public Transform transtoMove;
@@ -11,13 +11,11 @@ public class InputControl : MonoBehaviour
     public bool localMovement;
     private Touch curTouch;
     private Vector3 newPos = Vector3.zero;
-    private AudioSource ballFireSound;
     private Animator ballAnimator;
     private Rigidbody rb;
-
+    private bool isTouching = false;
     private void Start()
     {
-        ballFireSound = transform.GetChild(0).GetComponent<AudioSource>();
         ballAnimator = transform.GetChild(0).GetComponent<Animator>();
         rb = transform.GetChild(0).GetComponent<Rigidbody>();
     }
@@ -25,32 +23,35 @@ public class InputControl : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            if (!ballFireSound.isPlaying)
-            {
-                ballFireSound.Play();
-            }
-            ballAnimator.SetBool("BallFire", true);
             curTouch = Input.GetTouch(0);
-            if (curTouch.phase == TouchPhase.Moved)
+            if (!EventSystem.current.IsPointerOverGameObject(curTouch.fingerId))
             {
-                float newX = curTouch.deltaPosition.x * speedModifier * Time.deltaTime;
-                newPos = localMovement ? transtoMove.localPosition : transtoMove.position;
-                newPos.x += newX;
-                newPos.x = Mathf.Clamp(newPos.x, xMin, xMax);
-                if (localMovement)
+                if (curTouch.phase == TouchPhase.Began)
                 {
-                    transtoMove.localPosition = newPos;
+                    isTouching = true;
+                    ballAnimator.SetBool("BallFire", true);
                 }
-                else
+                else if (curTouch.phase == TouchPhase.Ended || curTouch.phase == TouchPhase.Canceled)
                 {
-                    transtoMove.position = newPos;
+                    isTouching = false;
+                    ballAnimator.SetBool("BallFire", false);
+                }
+                if (isTouching && curTouch.phase == TouchPhase.Moved)
+                {
+                    float newX = curTouch.deltaPosition.x * speedModifier * Time.deltaTime;
+                    newPos = localMovement ? transtoMove.localPosition : transtoMove.position;
+                    newPos.x += newX;
+                    newPos.x = Mathf.Clamp(newPos.x, xMin, xMax);
+                    if (localMovement)
+                    {
+                        transtoMove.localPosition = newPos;
+                    }
+                    else
+                    {
+                        transtoMove.position = newPos;
+                    }
                 }
             }
-        }
-        else
-        {
-            ballFireSound.Stop();
-            ballAnimator.SetBool("BallFire", false);
         }
     }
 }

@@ -116,18 +116,23 @@ public class PlayerTarget : MonoBehaviour
                 DeathWithParticlesSmall();
                 other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
                 other.transform.GetComponent<HomeAnimation>().HomeAttack();
+                other.transform.parent.GetComponent<HomeDestroy>().HomeControl();
             }
             else if (gameObject.layer == 3)
             {
                 DeathWithParticlesBig();
                 other.transform.GetChild(6).GetChild(0).GetComponent<ScoreHome>().scoreValue -= 1;
                 other.transform.GetComponent<HomeAnimation>().HomeAttack();
+                other.transform.parent.GetComponent<HomeDestroy>().HomeControl();
             }
 
         }
         if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Enemy Big")
         {
-            var goldCounter = GameObject.Find("Gold counter").GetComponent<GoldCounter>().goldValue += 1;
+            GoldCounter.instance.Gold++;
+            TMPro.TextMeshProUGUI goldUIText;
+            goldUIText = GameObject.Find("Gold counter").GetComponent<TMPro.TextMeshProUGUI>();
+            goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.Gold).ToString();
             if (gameObject.layer == 6)
             {
                 DeathWithParticlesSmall();

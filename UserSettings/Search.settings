@@ -10,7 +10,7 @@ scopes = {
 	"last_search.2138236A" = ""
 	"OpenInspectorPreview.2138236A" = "0"
 	"currentGroup.2138236A" = "asset"
-	"last_search.DA949528" = "DiamondMainMenu"
+	"last_search.DA949528" = "a"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
 }
@@ -59,15 +59,16 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"wa"
+	"w"
 	"DiamondMainMenu"
 	"public class DiamondMainMenu : MonoBehaviour "
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
-showSavedSearchPanel = false
-expandedQueries = [
-]
+showSavedSearchPanel = true
+expandedQueries = [-1765347274]
 queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"
