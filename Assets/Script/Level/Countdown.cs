@@ -12,11 +12,8 @@ public class Countdown : MonoBehaviour
     private float timeElapsed;
     private TMPro.TextMeshProUGUI diamondUIText;
     private TMPro.TextMeshProUGUI goldUIText;
-    private float animationDuration = 3.0f;
+    private float animationDuration = 2.0f;
 
-    private void Start()
-    {
-    }
     public void Victory()
     {
         numbers[1].SetActive(true);
