@@ -6,6 +6,7 @@ public class GoldCounter : MonoBehaviour
 {
     public static GoldCounter instance;
     private int _c = 0;
+    public int originalGold;
     public int Gold
     {
         get { return _c; }
@@ -25,5 +26,9 @@ public class GoldCounter : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void OriginalGold()
+    {
+        originalGold = Gold;
     }
 }

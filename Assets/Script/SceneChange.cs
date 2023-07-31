@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TestValueTwo : MonoBehaviour
+public class SceneChange : MonoBehaviour
 {
     public int sceneNumber;
     public void LoadFirstScene()

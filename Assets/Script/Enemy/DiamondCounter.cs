@@ -6,6 +6,7 @@ public class DiamondCounter : MonoBehaviour
 {
     public static DiamondCounter instance;
     private int _c = 0;
+    public int originalDiamond;
     public int Diamonds
     {
         get { return _c; }
@@ -25,5 +26,9 @@ public class DiamondCounter : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void OriginalDiamond()
+    {
+        originalDiamond = Diamonds;
     }
 }

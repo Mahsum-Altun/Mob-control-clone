@@ -8,12 +8,18 @@ public class HomeDestroy : MonoBehaviour
     public string targetLayerName = "Last Home";
     private bool ifControl = false;
     private bool camZoomBool = false;
+    private bool steetingButton = false;
 
 
     private void Update()
     {
         if (camZoomBool == true)
         {
+            if (steetingButton == false)
+            {
+                GameObject.Find("Settings Button").gameObject.SetActive(false);
+                steetingButton = true;
+            }
             float smoothness = 1.5f;
             GameObject camZoom = GameObject.Find("CameraTarget");
             camZoom.transform.position = Vector3.Lerp(camZoom.transform.position, transform.position, smoothness * Time.deltaTime);
