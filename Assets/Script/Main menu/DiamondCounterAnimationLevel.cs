@@ -73,7 +73,7 @@ public class DiamondCounterAnimationLevel : MonoBehaviour
                     diamondQueue.Enqueue(diamond);
 
                     DiamondCounter.instance.Diamonds++;
-                    diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString();
+                    diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString("n0");
                     GameObject.Find("Diamond").GetComponent<DiamondAnimation>().DiamondShake();
                 });
             }

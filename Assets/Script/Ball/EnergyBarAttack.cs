@@ -11,11 +11,11 @@ public class EnergyBarAttack : MonoBehaviour
     private void TakeEnergy(int energy)
     {
         currentEnergy += energy;
-        energyBar.SetEnergy(currentEnergy);
-        if (currentEnergy == 100)
+        if (currentEnergy > 100)
         {
             currentEnergy = 0;
         }
+        energyBar.SetEnergy(currentEnergy);
     }
     public void EnergyReplenishment()
     {

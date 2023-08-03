@@ -132,7 +132,7 @@ public class PlayerTarget : MonoBehaviour
             GoldCounter.instance.Gold++;
             TMPro.TextMeshProUGUI goldUIText;
             goldUIText = GameObject.Find("Gold counter").GetComponent<TMPro.TextMeshProUGUI>();
-            goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.Gold).ToString();
+            goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.Gold).ToString("n0");
             if (gameObject.layer == 6)
             {
                 DeathWithParticlesSmall();

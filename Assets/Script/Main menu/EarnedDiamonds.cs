@@ -13,6 +13,6 @@ public class EarnedDiamonds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString();
+        diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString("n0");
     }
 }

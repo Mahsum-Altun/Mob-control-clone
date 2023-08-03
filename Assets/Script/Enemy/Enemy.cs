@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     Transform spawn;
     int index = -1;
     GameObject enemyParent;
+    private Rigidbody rb;
+    public float rbSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -42,15 +44,19 @@ public class Enemy : MonoBehaviour
     }
     void EnemySpawn()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
-            GameObject enemySmall1 = Instantiate(small, new Vector3(spawn.transform.position.x, spawn.transform.position.y, spawn.transform.position.z), small.transform.rotation);
+            GameObject enemySmall1 = Instantiate(small, spawn.transform.position, spawn.transform.rotation);
             enemySmall1.transform.parent = enemyParent.transform;
+            rb = enemySmall1.GetComponent<Rigidbody>();
+            rb.AddRelativeForce(Vector3.forward * rbSpeed);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
-            GameObject enemyBig1 = Instantiate(big, new Vector3(spawn.transform.position.x, spawn.transform.position.y, spawn.transform.position.z), big.transform.rotation);
+            GameObject enemyBig1 = Instantiate(big, spawn.transform.position, spawn.transform.rotation);
             enemyBig1.transform.parent = enemyParent.transform;
+            rb = enemyBig1.GetComponent<Rigidbody>();
+            rb.AddRelativeForce(Vector3.forward * rbSpeed);
         }
     }
 }

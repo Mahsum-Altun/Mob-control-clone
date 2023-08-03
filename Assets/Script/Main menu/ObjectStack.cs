@@ -25,7 +25,7 @@ public class ObjectStack : MonoBehaviour
         children[prefabData.i].GetChild(1).gameObject.SetActive(false);
         children[prefabData.i].GetComponent<UpdateBarRanges>().enabled = false;
         topColorCube = GameObject.Find("TopCube").GetComponent<Transform>().gameObject;
-        prefabData.currentPosition.y = 0.17f;
+        prefabData.currentPosition.y = 0.02f;
         topColorCube.transform.position = prefabData.currentPosition;
 
         diamondCounterAnimationMainMenu = GameObject.Find("Animate diamond").GetComponent<DiamondCounterAnimationMainMenu>();

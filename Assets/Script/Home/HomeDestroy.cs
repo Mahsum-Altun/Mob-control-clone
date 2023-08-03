@@ -5,7 +5,7 @@ using UnityEngine;
 public class HomeDestroy : MonoBehaviour
 {
     public ParticleSystem deathParticles;
-    public string targetLayerName = "Last Home";
+    private string targetLayerName = "Last Home";
     private bool ifControl = false;
     private bool camZoomBool = false;
     private bool steetingButton = false;
@@ -41,6 +41,7 @@ public class HomeDestroy : MonoBehaviour
                     countdownParent.transform.GetChild(1).GetChild(0).GetComponent<Animator>().SetTrigger("Victory");
                     GameObject.Find("Ball Blue").GetComponent<Animator>().SetBool("BallFire", false);
                     GameObject.Find("Ball and canvas").GetComponent<Transform>().localPosition = new Vector3(0, 0, 0);
+                    GameObject.Find("Blue And Yellow Parent").GetComponent<TransformEx>().DestroyChild();
                     ifControl = true;
                 }
                 else if (count > 1)

@@ -43,7 +43,7 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         prefabs = GameObject.Find("Prefabs counter control").GetComponent<Prefabs>();
         PrefabReference();
-        diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString();
+        diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString("n0");
 
         //Prepare Pool
         PrepareDiamonds();
@@ -104,7 +104,7 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
                         diamondQueue.Enqueue(diamond);
                         if (prefabData.imageCounter >= 0)
                         {
-                            diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString();
+                            diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString("n0");
                             objectColorChange.CubeMovement();
                         }
                     });

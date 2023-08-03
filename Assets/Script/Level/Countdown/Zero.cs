@@ -20,7 +20,7 @@ public class Zero : MonoBehaviour
     public void SkorePanel()
     {
         GameObject scoreCanvas = GameObject.Find("Score");
-        scoreCanvas.transform.GetChild(0).gameObject.SetActive(true);
+        scoreCanvas.transform.GetChild(1).gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 }

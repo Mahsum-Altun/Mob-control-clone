@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace TMPro.Examples
 {
-    
+
     public class CameraController : MonoBehaviour
     {
         public enum CameraModes { Follow, Isometric, Free }
@@ -79,7 +79,7 @@ namespace TMPro.Examples
         // Update is called once per frame
         void LateUpdate()
         {
-            GetPlayerInput();
+            //GetPlayerInput();
 
 
             // Check if we still have a valid target
@@ -123,7 +123,7 @@ namespace TMPro.Examples
 
 
 
-        void GetPlayerInput()
+        /*void GetPlayerInput()
         {
             moveVector = Vector3.zero;
 
@@ -287,6 +287,6 @@ namespace TMPro.Examples
             }
 
 
-        }
+        }*/
     }
 }

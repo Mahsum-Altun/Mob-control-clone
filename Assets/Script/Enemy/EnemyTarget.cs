@@ -91,7 +91,7 @@ public class EnemyTarget : MonoBehaviour
     }
     IEnumerator EnemyTriggerControl()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         GetComponent<Collider>().isTrigger = true;
     }
 }

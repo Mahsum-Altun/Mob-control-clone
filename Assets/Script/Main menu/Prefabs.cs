@@ -76,7 +76,7 @@ public class Prefabs : MonoBehaviour
             prefabData.prefabIndex = 0;
         }
         topColorCube = GameObject.Find("TopCube").GetComponent<Transform>().gameObject;
-        prefabData.currentPosition.y = 0.17f;
+        prefabData.currentPosition.y = 0.02f;
         topColorCube.transform.position = prefabData.currentPosition;
         DiamondCounterAnimationMainMenu diamondCounterAnimationMainMenu;
         diamondCounterAnimationMainMenu = GameObject.Find("Animate diamond").GetComponent<DiamondCounterAnimationMainMenu>();

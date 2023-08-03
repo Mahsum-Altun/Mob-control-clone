@@ -5,15 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class DiamondMainMenu : MonoBehaviour
 {
-    //TMPro.TMP_Text diamondUIText;
     ObjectColorChange objectColorChange;
     private bool counter = false;
     public PrefabData prefabData;
     DiamondCounterAnimationMainMenu diamondCounterAnimationMainMenu;
+    private GameObject diamondTarget;
+    private Animator animator;
 
     private void Awake()
     {
-        //diamondUIText = GetComponent<TMPro.TMP_Text>();
+        diamondTarget = GameObject.Find("Diamond target");
+        animator = diamondTarget.GetComponent<Animator>();
         GameObject animateDiamond = GameObject.Find("Animate diamond");
         diamondCounterAnimationMainMenu = animateDiamond.GetComponent<DiamondCounterAnimationMainMenu>();
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -27,8 +29,9 @@ public class DiamondMainMenu : MonoBehaviour
     {
         if (scene.buildIndex == 0)
         {
-            //diamondUIText = GetComponent<TMPro.TMP_Text>();
             objectColorChange = FindObjectOfType<ObjectColorChange>();
+            diamondTarget = GameObject.Find("Diamond target");
+            animator = diamondTarget.GetComponent<Animator>();
             GameObject animateDiamond = GameObject.Find("Animate diamond");
             diamondCounterAnimationMainMenu = animateDiamond.GetComponent<DiamondCounterAnimationMainMenu>();
         }
@@ -36,8 +39,7 @@ public class DiamondMainMenu : MonoBehaviour
 
     void Update()
     {
-        //diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString();
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Diamond target"))
         {
             if (Input.GetMouseButton(0))
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HomeAnimation : MonoBehaviour
 {
-    private  Animator homeAnimator;
+    private Animator homeAnimator;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,5 +13,6 @@ public class HomeAnimation : MonoBehaviour
     public void HomeAttack()
     {
         homeAnimator.SetTrigger("Home Attack");
+        transform.GetChild(10)?.GetComponent<ParticleSystem>()?.Play();
     }
 }
