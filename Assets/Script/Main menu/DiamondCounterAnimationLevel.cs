@@ -23,6 +23,7 @@ public class DiamondCounterAnimationLevel : MonoBehaviour
     [SerializeField] Ease easeType;
 
     Vector3 targetPosition;
+    private AudioSource diamondSound;
 
 
 
@@ -30,6 +31,7 @@ public class DiamondCounterAnimationLevel : MonoBehaviour
     {
         //Prepare Pool
         PrepareDiamonds();
+        diamondSound = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -75,6 +77,7 @@ public class DiamondCounterAnimationLevel : MonoBehaviour
                     DiamondCounter.instance.Diamonds++;
                     diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString("n0");
                     GameObject.Find("Diamond").GetComponent<DiamondAnimation>().DiamondShake();
+                    diamondSound.Play();
                 });
             }
         }

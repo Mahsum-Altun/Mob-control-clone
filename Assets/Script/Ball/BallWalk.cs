@@ -9,11 +9,14 @@ public class BallWalk : MonoBehaviour
     public Transform[] wayPoints;
     int wayPoint = 0;
     public bool coroutine = false;
+    private AudioSource ballwalkSound;
+    public bool soundControl = false;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        ballwalkSound = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -26,17 +29,11 @@ public class BallWalk : MonoBehaviour
             {
                 wayPoint++;
             }
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "waypoints")
-        {
-            coroutine = true;
-        }
-        if (other.gameObject.tag == "TouchControl")
-        {
-            GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = true;
+            if (soundControl == false)
+            {
+                ballwalkSound.Play();
+                soundControl = true;
+            }
         }
     }
 }

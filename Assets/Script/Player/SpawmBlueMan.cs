@@ -11,8 +11,11 @@ public class SpawmBlueMan : MonoBehaviour
     private Rigidbody rb;
     public float rbSpeed;
     private AudioSource ballFireSound;
+    public AudioClip bigSpawnSound;
+    private BallWalk ballWalk;
     private void Start()
     {
+        ballWalk = transform.root.GetComponent<BallWalk>();
         energyBarAttack = GetComponent<EnergyBarAttack>();
         ballFireSound = GetComponent<AudioSource>();
     }
@@ -32,6 +35,19 @@ public class SpawmBlueMan : MonoBehaviour
             myBig.transform.parent = parent.transform;
             rb = myBig.GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * rbSpeed);
+            ballFireSound.PlayOneShot(bigSpawnSound);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "waypoints")
+        {
+            ballWalk.coroutine = true;
+        }
+        if (other.gameObject.tag == "TouchControl")
+        {
+            GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = true;
+            ballWalk.soundControl = false;
         }
     }
 }

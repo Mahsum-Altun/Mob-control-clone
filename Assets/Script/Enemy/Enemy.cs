@@ -13,10 +13,12 @@ public class Enemy : MonoBehaviour
     GameObject enemyParent;
     private Rigidbody rb;
     public float rbSpeed;
+    private AudioSource enemySound;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemySound = GetComponent<AudioSource>();
         spawn = transform.GetChild(0).GetChild(8).GetComponent<Transform>();
         enemyParent = GameObject.Find("Enemy parent").gameObject;
     }
@@ -30,6 +32,7 @@ public class Enemy : MonoBehaviour
             if (scoreValue[i] == score)
             {
                 EnemySpawn();
+                enemySound.Play();
                 index = i;
             }
         }

@@ -11,9 +11,12 @@ public class DiamondMainMenu : MonoBehaviour
     private GameObject diamondTarget;
     private Animator animator;
     public bool isPausedControl = false;
+    private AudioSource diamondTouchSound;
+    private bool soundControl = false;
 
     private void Awake()
     {
+        diamondTouchSound = transform.root.GetComponent<AudioSource>();
         diamondTarget = GameObject.Find("Diamond target");
         animator = diamondTarget.GetComponent<Animator>();
         GameObject animateDiamond = GameObject.Find("Animate diamond");
@@ -46,11 +49,20 @@ public class DiamondMainMenu : MonoBehaviour
                 if (DiamondCounter.instance.Diamonds > 0)
                 {
                     diamondCounterAnimationMainMenu.AddDiamondMainMenu();
+                    if (soundControl == false)
+                    {
+                        diamondTouchSound.Play();
+                        soundControl = true;
+                    }
                 }
                 else
                 {
                     DiamondCounter.instance.Diamonds = 0;
                 }
+            }
+            else
+            {
+                soundControl = false;
             }
         }
 

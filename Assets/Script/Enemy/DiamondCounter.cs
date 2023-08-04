@@ -17,7 +17,6 @@ public class DiamondCounter : MonoBehaviour
     }
     private void Awake()
     {
-        Diamonds = 5000;
         if (instance == null)
         {
             instance = this;

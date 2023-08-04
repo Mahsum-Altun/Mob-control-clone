@@ -9,12 +9,13 @@ public class PlayerTarget : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject parent;
     public GameObject small;
-    public GameObject big;
+    public  GameObject big;
     public float halfWidth;
     public ParticleSystem deathParticles;
     private GameObject[] home;
     private Transform[] homeTransform;
     DiamondCounterAnimationLevel DiamondCounterAnimationLevel;
+    private AudioSource destroySound;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class PlayerTarget : MonoBehaviour
     }
     private void Start()
     {
+        destroySound = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         parent = GameObject.Find("Blue And Yellow Parent");
     }
@@ -205,6 +207,7 @@ public class PlayerTarget : MonoBehaviour
     }
     private void DeathWithParticlesSmall()
     {
+        destroySound.Play();
         Instantiate(deathParticles, transform.position, transform.rotation);
         Destroy(gameObject);
     }

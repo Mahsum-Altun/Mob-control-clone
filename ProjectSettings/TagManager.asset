@@ -23,6 +23,7 @@ TagManager:
   - Home 1
   - Home 3
   - EnemyDirectionTarget
+  - Ball
   layers:
   - Default
   - TransparentFX

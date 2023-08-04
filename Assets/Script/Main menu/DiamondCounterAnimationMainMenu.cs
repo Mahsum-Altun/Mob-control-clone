@@ -112,6 +112,13 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
                     .SetEase(easeType)
                     .OnComplete(() =>
                     {
+                        diamond.GetComponent<AudioSource>().Play();
+                        if (prefabData.imageCounter >= 0)
+                        {
+                            objectColorChange.CubeMovement();
+                            prefabData.imageCounter--;
+                            diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString("n0");
+                        }
                         diamond.transform.DOMove(targetPosition, duration)
                         .SetEase(easeType)
                         .OnComplete(() =>
@@ -119,12 +126,6 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
                                 //executes whenever coin reach target position
                                 diamond.SetActive(false);
                                 diamondQueue.Enqueue(diamond);
-                                if (prefabData.imageCounter >= 0)
-                                {
-                                    objectColorChange.CubeMovement();
-                                    prefabData.imageCounter--;
-                                    diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString("n0");
-                                }
                             });
                     });
                 }
