@@ -40,7 +40,6 @@ Transform:
   - {fileID: 8269160769529675931}
   - {fileID: 2675042050323205448}
   - {fileID: 8043104411737936016}
-  - {fileID: 4825208647475319740}
   - {fileID: 6550439920840889497}
   m_Father: {fileID: 8085216535123151119}
   m_RootOrder: 0
@@ -665,37 +664,6 @@ Transform:
   m_Father: {fileID: 7592384802546444245}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!1 &5500275396914975626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4825208647475319740}
-  m_Layer: 0
-  m_Name: Enemy parent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4825208647475319740
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5500275396914975626}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7592384802546444245}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6554601180041366603
 GameObject:
   m_ObjectHideFlags: 0
@@ -31286,7 +31254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4865807609286998, guid: c9a4dedcf9c261c4e97fee5773db0fb2, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4865807609286998, guid: c9a4dedcf9c261c4e97fee5773db0fb2, type: 3}
       propertyPath: m_LocalScale.x

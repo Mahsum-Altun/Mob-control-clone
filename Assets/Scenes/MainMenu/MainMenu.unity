@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.6938445, a: 1}
+  m_IndirectSpecularColor: {r: 0.008407573, g: 0.33398405, b: 0.24804728, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -963,11 +963,12 @@ MonoBehaviour:
     type: 3}
   target: {fileID: 0}
   maxDiamond: 50
-  minAnimDuration: 0.8
-  maxAnimDuration: 1.7
-  easeType: 28
+  minAnimDuration: 0.5
+  maxAnimDuration: 1
+  easeType: 0
   isPaused: 0
   diamondUIText: {fileID: 0}
+  isPausedControl: 0
 --- !u!4 &708590397
 Transform:
   m_ObjectHideFlags: 0
@@ -1093,7 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd78513e43b98c4782c52fda67551a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeSpeed: 50
+  cubeSpeed: 100
   prefabData: {fileID: 11400000, guid: 8bbf0c5ffd8a88342bc2d79be756789c, type: 2}
 --- !u!1 &1170321950
 GameObject:

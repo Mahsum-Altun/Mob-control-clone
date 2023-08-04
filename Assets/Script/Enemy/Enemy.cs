@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         spawn = transform.GetChild(0).GetChild(8).GetComponent<Transform>();
-        enemyParent = transform.GetChild(0).GetChild(9).gameObject;
+        enemyParent = GameObject.Find("Enemy parent").gameObject;
     }
 
     // Update is called once per frame

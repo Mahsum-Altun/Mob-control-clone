@@ -7,11 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     private static int currentLevelIndex = 1;
 
-    public void Start()
-    {
-        Debug.Log(currentLevelIndex);
-    }
-
     public void LoadNextLevel()
     {
         currentLevelIndex++;

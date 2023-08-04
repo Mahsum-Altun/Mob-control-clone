@@ -37,11 +37,11 @@ public class HomeDestroy : MonoBehaviour
                 {
                     camZoomBool = true;
                     GameObject countdownParent = GameObject.Find("Score");
-                    countdownParent.transform.GetChild(1).gameObject.SetActive(true);
-                    countdownParent.transform.GetChild(1).GetChild(0).GetComponent<Animator>().SetTrigger("Victory");
+                    countdownParent.transform.GetChild(0).gameObject.SetActive(true);
+                    countdownParent.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetTrigger("Victory");
                     GameObject.Find("Ball Blue").GetComponent<Animator>().SetBool("BallFire", false);
                     GameObject.Find("Ball and canvas").GetComponent<Transform>().localPosition = new Vector3(0, 0, 0);
-                    GameObject.Find("Blue And Yellow Parent").GetComponent<TransformEx>().DestroyChild();
+                    GameObject.Find("Enemy parent").GetComponent<TransformEx>().DestroyChild();
                     ifControl = true;
                 }
                 else if (count > 1)

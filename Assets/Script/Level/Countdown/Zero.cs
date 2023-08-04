@@ -21,6 +21,7 @@ public class Zero : MonoBehaviour
     {
         GameObject scoreCanvas = GameObject.Find("Score");
         scoreCanvas.transform.GetChild(1).gameObject.SetActive(true);
+        GameObject.Find("Blue And Yellow Parent").GetComponent<TransformEx>().DestroyChild();
         gameObject.SetActive(false);
     }
 }

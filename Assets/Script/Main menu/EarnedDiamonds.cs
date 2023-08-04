@@ -5,10 +5,6 @@ using UnityEngine;
 public class EarnedDiamonds : MonoBehaviour
 {
     [SerializeField] TMPro.TMP_Text diamondUIText;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()

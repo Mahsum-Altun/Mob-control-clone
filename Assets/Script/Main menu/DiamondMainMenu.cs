@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class DiamondMainMenu : MonoBehaviour
 {
     ObjectColorChange objectColorChange;
-    private bool counter = false;
     public PrefabData prefabData;
     DiamondCounterAnimationMainMenu diamondCounterAnimationMainMenu;
     private GameObject diamondTarget;
     private Animator animator;
+    public bool isPausedControl = false;
 
     private void Awake()
     {
@@ -54,16 +54,12 @@ public class DiamondMainMenu : MonoBehaviour
             }
         }
 
-        if (prefabData.imageCounter <= 0 && counter == false)
+        if (prefabData.imageCounter <= 0 && isPausedControl == false)
         {
             diamondCounterAnimationMainMenu.isPaused = true;
             prefabData.imageCounter = 0;
             StartCoroutine(PauseLoopForSeconds(1.6f));
-        }
-        else
-        {
-            counter = false;
-            diamondCounterAnimationMainMenu.isPaused = false;
+            isPausedControl = true;
         }
 
     }
@@ -71,9 +67,16 @@ public class DiamondMainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         prefabData.imageCounter = 100;
+        diamondCounterAnimationMainMenu.isPausedControl = prefabData.imageCounter;
         GameObject prefab = transform.root.gameObject;
         ObjectStack objectStack = prefab.GetComponent<ObjectStack>();
-        objectStack.ObjectColorCounter();
-        counter = true;
+        int lastIndex;
+        lastIndex = prefab.transform.childCount - 1;
+        if (!prefab.transform.GetChild(lastIndex).GetChild(1).gameObject.activeSelf)
+        {
+            objectStack.ObjectColorCounter();
+            diamondCounterAnimationMainMenu.isPaused = false;
+        }
+        isPausedControl = false;
     }
 }

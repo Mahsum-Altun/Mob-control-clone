@@ -13,6 +13,6 @@ public class HomeAnimation : MonoBehaviour
     public void HomeAttack()
     {
         homeAnimator.SetTrigger("Home Attack");
-        transform.GetChild(10)?.GetComponent<ParticleSystem>()?.Play();
+        transform.GetChild(9)?.GetComponent<ParticleSystem>()?.Play();
     }
 }

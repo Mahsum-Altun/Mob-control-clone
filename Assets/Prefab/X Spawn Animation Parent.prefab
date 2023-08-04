@@ -299,7 +299,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a1143ee683302f4aa628c052723efc1, type: 2}
+  - {fileID: 2100000, guid: 76c48820046d5d84c8161f72dd27b999, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -358,7 +358,7 @@ Transform:
   m_GameObject: {fileID: 793102557923521249}
   m_LocalRotation: {x: 0.52469647, y: 0.52469647, z: 0.4740186, w: 0.4740186}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.373024, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 793102558055065127}
@@ -628,7 +628,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a1143ee683302f4aa628c052723efc1, type: 2}
+  - {fileID: 2100000, guid: 76c48820046d5d84c8161f72dd27b999, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 793102558778775542}
   - component: {fileID: 793102558778775540}
   - component: {fileID: 793102558778775543}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1032,7 @@ RectTransform:
   m_GameObject: {fileID: 793102558778775537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9317685, y: 1.8681713, z: 1.8681713}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 793102559066810860}
@@ -1073,8 +1073,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 75d0debd2d2700a4abbd96642a60b266, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 75d0debd2d2700a4abbd96642a60b266, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1184,7 +1184,7 @@ GameObject:
   - component: {fileID: 793102559066810867}
   - component: {fileID: 793102559066810866}
   - component: {fileID: 793102559066810861}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,8 +1301,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793102559208745616}
   m_LocalRotation: {x: 0.52469647, y: 0.52469647, z: 0.4740186, w: 0.4740186}
-  m_LocalPosition: {x: -0.89221954, y: 0, z: -8.769287}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.9317, y: -0, z: -9.1578}
+  m_LocalScale: {x: 1, y: 2.3730242, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 793102558055065127}
@@ -1572,7 +1572,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a1143ee683302f4aa628c052723efc1, type: 2}
+  - {fileID: 2100000, guid: 76c48820046d5d84c8161f72dd27b999, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

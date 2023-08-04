@@ -27,6 +27,7 @@ public class MissionCompleted : MonoBehaviour
         GameObject.Find("Ball Parent").GetComponent<BallWalk>().coroutine = true;
         GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = false;
         GameObject.Find("Blue And Yellow Parent").GetComponent<TransformEx>().DestroyChild();
+        GameObject.Find("Enemy parent").GetComponent<TransformEx>().DestroyChild();
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }

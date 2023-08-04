@@ -15,5 +15,5 @@ MonoBehaviour:
   prefabIndex: 4
   imageCounter: 100
   firstSpawn: 1
-  i: 1
+  i: 2
   currentPosition: {x: 0.56, y: 0.02, z: -0.03}

@@ -33,6 +33,8 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
 
     ObjectColorChange objectColorChange;
 
+    public int isPausedControl = 0;
+
     private void Awake()
     {
         objectColorChange = FindObjectOfType<ObjectColorChange>();
@@ -44,6 +46,7 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
         prefabs = GameObject.Find("Prefabs counter control").GetComponent<Prefabs>();
         PrefabReference();
         diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString("n0");
+        isPausedControl = prefabData.imageCounter;
 
         //Prepare Pool
         PrepareDiamonds();
@@ -87,26 +90,42 @@ public class DiamondCounterAnimationMainMenu : MonoBehaviour
                     //extract a diamond from the pool
                     GameObject diamond = diamondQueue.Dequeue();
                     diamond.SetActive(true);
-                    prefabData.imageCounter--;
                     DiamondCounter.instance.Diamonds--;
+                    isPausedControl--;
+                    if (isPausedControl == 0)
+                    {
+                        isPaused = true;
+                    }
 
                     //moce diamond to the collected diamond pos
                     diamond.transform.position = collectedDiamondPosition;
 
                     //Animate diamond to target position
+                    //float duration = Random.Range(minAnimDuration, maxAnimDuration);
                     float duration = Random.Range(minAnimDuration, maxAnimDuration);
-                    diamond.transform.DOMove(targetPosition, duration)
+                    float randomX = Random.Range(-1f, 1f); // Rastgele x ekseni kayması
+                    float randomZ = Random.Range(-1f, 1f); // Rastgele z ekseni kayması
+                    Vector3 randomOffset = new Vector3(randomX, 0f, randomZ);
+                    Vector3 targetPosWithOffset = targetPosition + randomOffset;
+
+                    diamond.transform.DOMove(targetPosWithOffset, duration)
                     .SetEase(easeType)
                     .OnComplete(() =>
                     {
-                        //executes whenever coin reach target position
-                        diamond.SetActive(false);
-                        diamondQueue.Enqueue(diamond);
-                        if (prefabData.imageCounter >= 0)
-                        {
-                            diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString("n0");
-                            objectColorChange.CubeMovement();
-                        }
+                        diamond.transform.DOMove(targetPosition, duration)
+                        .SetEase(easeType)
+                        .OnComplete(() =>
+                            {
+                                //executes whenever coin reach target position
+                                diamond.SetActive(false);
+                                diamondQueue.Enqueue(diamond);
+                                if (prefabData.imageCounter >= 0)
+                                {
+                                    objectColorChange.CubeMovement();
+                                    prefabData.imageCounter--;
+                                    diamondUIText.text = Mathf.FloorToInt(prefabData.imageCounter).ToString("n0");
+                                }
+                            });
                     });
                 }
             }

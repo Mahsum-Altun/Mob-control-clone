@@ -83,6 +83,7 @@ public class Prefabs : MonoBehaviour
         diamondCounterAnimationMainMenu.PrefabReferenceIReset();
         SpawnPrefab();
         diamondCounterAnimationMainMenu.PrefabReference();
+        diamondCounterAnimationMainMenu.isPaused = false;
         StartCoroutine(PrefabBoolSecond());
     }
 }

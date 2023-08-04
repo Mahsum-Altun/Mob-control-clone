@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Multiply : MonoBehaviour
 {
@@ -41,5 +42,6 @@ public class Multiply : MonoBehaviour
 
         diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString();
         goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.Gold).ToString();
+        SceneManager.LoadScene(0);
     }
 }

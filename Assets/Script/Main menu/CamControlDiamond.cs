@@ -29,10 +29,7 @@ public class CamControlDiamond : MonoBehaviour
         }
 
     }
-    IEnumerator PauseLoopForSeconds(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-    }
+
     IEnumerator PauseCamForSeconds1(float duration)
     {
         yield return new WaitForSeconds(duration);
