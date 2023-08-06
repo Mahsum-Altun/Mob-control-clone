@@ -44,11 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978f08930f250e54fb17b0770db39bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamondUIText: {fileID: 0}
-  animatedDiamondPrefab: {fileID: 5972244286461750342, guid: 328277320ba29834795fdad875347bf3,
-    type: 3}
-  target: {fileID: 0}
-  maxDiamond: 50
-  minAnimDuration: 0.7
-  maxAnimDuration: 1.8
-  easeType: 28
+  originalDiamond: 0

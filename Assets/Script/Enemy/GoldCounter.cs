@@ -7,6 +7,8 @@ public class GoldCounter : MonoBehaviour
     public static GoldCounter instance;
     private int _c = 0;
     public int originalGold;
+    public int levelGold = 0;
+    public PrefabData prefabData;
     public int Gold
     {
         get { return _c; }
@@ -17,6 +19,7 @@ public class GoldCounter : MonoBehaviour
     }
     private void Awake()
     {
+        Gold = prefabData.goldValue;
         if (instance == null)
         {
             instance = this;
@@ -29,6 +32,6 @@ public class GoldCounter : MonoBehaviour
     }
     public void OriginalGold()
     {
-        originalGold = Gold;
+        originalGold = levelGold;
     }
 }

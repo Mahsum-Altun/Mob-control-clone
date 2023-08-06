@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 793102557987930299}
   m_Layer: 0
   m_Name: Plane (2)
-  m_TagString: X4 Home1
+  m_TagString: X4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1165,7 +1165,7 @@ Transform:
   m_GameObject: {fileID: 793102559033042919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 71.81539, y: 8.441216, z: -492.362}
-  m_LocalScale: {x: 0.7525, y: 0.7336816, z: 0.7525}
+  m_LocalScale: {x: 0.7525, y: 0.7336816, z: 1.1830966}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 793102558055065127}

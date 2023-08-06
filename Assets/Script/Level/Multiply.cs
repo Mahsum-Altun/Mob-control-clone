@@ -31,7 +31,7 @@ public class Multiply : MonoBehaviour
 
             float progress = timeElapsed / animationDuration;
             int newDiamondValue = Mathf.FloorToInt(Mathf.Lerp(startDiamondValue, DiamondCounter.instance.Diamonds, progress));
-            int newGoldValue = Mathf.FloorToInt(Mathf.Lerp(startGoldValue, GoldCounter.instance.Gold, progress));
+            int newGoldValue = Mathf.FloorToInt(Mathf.Lerp(startGoldValue, GoldCounter.instance.levelGold, progress));
 
             diamondUIText.text = newDiamondValue.ToString();
             goldUIText.text = newGoldValue.ToString();
@@ -41,7 +41,7 @@ public class Multiply : MonoBehaviour
         }
 
         diamondUIText.text = Mathf.FloorToInt(DiamondCounter.instance.Diamonds).ToString();
-        goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.Gold).ToString();
+        goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.levelGold).ToString();
         SceneManager.LoadScene(0);
     }
 }

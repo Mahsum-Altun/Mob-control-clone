@@ -9,7 +9,7 @@ public class PlayerTarget : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject parent;
     public GameObject small;
-    public  GameObject big;
+    public GameObject big;
     public float halfWidth;
     public ParticleSystem deathParticles;
     private GameObject[] home;
@@ -131,10 +131,10 @@ public class PlayerTarget : MonoBehaviour
         }
         if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Enemy Big")
         {
-            GoldCounter.instance.Gold++;
+            GoldCounter.instance.levelGold++;
             TMPro.TextMeshProUGUI goldUIText;
             goldUIText = GameObject.Find("Gold counter").GetComponent<TMPro.TextMeshProUGUI>();
-            goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.Gold).ToString("n0");
+            goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.levelGold).ToString("n0");
             if (gameObject.layer == 6)
             {
                 DeathWithParticlesSmall();

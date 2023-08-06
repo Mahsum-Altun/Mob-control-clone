@@ -6,7 +6,7 @@ public class NextButton : MonoBehaviour
 {
     public void OriginalScoreNext()
     {
-        GoldCounter.instance.Gold = GoldCounter.instance.originalGold;
+        GoldCounter.instance.levelGold = GoldCounter.instance.originalGold;
         DiamondCounter.instance.Diamonds = DiamondCounter.instance.originalDiamond;
     }
 }

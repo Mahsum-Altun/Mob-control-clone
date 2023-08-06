@@ -6,9 +6,9 @@ public class MultiplyAnim : MonoBehaviour
 {
     public void XOneAndAHalf()
     {
-        GoldCounter.instance.Gold = 0;
+        GoldCounter.instance.levelGold = 0;
         DiamondCounter.instance.Diamonds = 0;
-        GoldCounter.instance.Gold = (int)(GoldCounter.instance.originalGold * 1.5f);
+        GoldCounter.instance.levelGold = (int)(GoldCounter.instance.originalGold * 1.5f);
         DiamondCounter.instance.Diamonds = (int)(DiamondCounter.instance.originalDiamond * 1.5f);
         Multiply multiplyScript = FindObjectOfType<Multiply>();
         if (multiplyScript != null)
@@ -22,9 +22,9 @@ public class MultiplyAnim : MonoBehaviour
     }
     public void XTwo()
     {
-        GoldCounter.instance.Gold = 0;
+        GoldCounter.instance.levelGold = 0;
         DiamondCounter.instance.Diamonds = 0;
-        GoldCounter.instance.Gold = (int)(GoldCounter.instance.originalGold * 2);
+        GoldCounter.instance.levelGold = (int)(GoldCounter.instance.originalGold * 2);
         DiamondCounter.instance.Diamonds = (int)(DiamondCounter.instance.originalDiamond * 2);
         Multiply multiplyScript = FindObjectOfType<Multiply>();
         if (multiplyScript != null)
@@ -38,9 +38,9 @@ public class MultiplyAnim : MonoBehaviour
     }
     public void XThree()
     {
-        GoldCounter.instance.Gold = 0;
+        GoldCounter.instance.levelGold = 0;
         DiamondCounter.instance.Diamonds = 0;
-        GoldCounter.instance.Gold = (int)(GoldCounter.instance.originalGold * 3);
+        GoldCounter.instance.levelGold = (int)(GoldCounter.instance.originalGold * 3);
         DiamondCounter.instance.Diamonds = (int)(DiamondCounter.instance.originalDiamond * 3);
         Multiply multiplyScript = FindObjectOfType<Multiply>();
         if (multiplyScript != null)

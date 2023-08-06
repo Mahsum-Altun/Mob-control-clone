@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8995302302792510510
+--- !u!1 &1180870289129779073
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8995302302792510504}
-  - component: {fileID: 5212695357883352617}
+  - component: {fileID: 1180870289129779074}
+  - component: {fileID: 1180870289129779075}
   m_Layer: 0
-  m_Name: _DiamondManager_Script
+  m_Name: Enemy parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8995302302792510504
+--- !u!4 &1180870289129779074
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8995302302792510510}
+  m_GameObject: {fileID: 1180870289129779073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100.07661, y: 46.282707, z: -516.6498}
+  m_LocalPosition: {x: -9.892811, y: 16.29103, z: -494.4051}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5212695357883352617
+--- !u!114 &1180870289129779075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8995302302792510510}
+  m_GameObject: {fileID: 1180870289129779073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978f08930f250e54fb17b0770db39bc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4891dac3902bf344b82151b8fa82c17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamondUIText: {fileID: 0}
-  animatedDiamondPrefab: {fileID: 5972244286461750342, guid: 328277320ba29834795fdad875347bf3,
-    type: 3}
-  target: {fileID: 0}
-  maxDiamond: 50
-  minAnimDuration: 0.7
-  maxAnimDuration: 1.8
-  easeType: 28

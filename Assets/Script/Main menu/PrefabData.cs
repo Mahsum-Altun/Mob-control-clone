@@ -10,8 +10,10 @@ public class PrefabData : ScriptableObject
     public bool firstSpawn = false;
     public int i = 0;
     public Vector3 currentPosition;
+    public int goldValue;
     private void OnDisable()
     {
         firstSpawn = false;
+        goldValue = GoldCounter.instance.Gold;
     }
 }

@@ -16,7 +16,7 @@ public class GameOver : MonoBehaviour
                 GameObject.Find("Ball and canvas").GetComponent<InputControl>().enabled = false;
                 GameObject.Find("Blue And Yellow Parent").GetComponent<TransformEx>().DestroyChild();
                 DiamondCounter.instance.Diamonds = 0;
-                GoldCounter.instance.Gold = 0;
+                GoldCounter.instance.levelGold = 0;
                 GameObject.Find("Defeat parent").GetComponent<Transform>().GetChild(0).gameObject.SetActive(true);
 
                 gameoverControl = true;

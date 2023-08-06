@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabIndex: 4
   imageCounter: 100
-  firstSpawn: 1
+  firstSpawn: 0
   i: 2
   currentPosition: {x: 0.56, y: 0.02, z: -0.03}
+  goldValue: 0

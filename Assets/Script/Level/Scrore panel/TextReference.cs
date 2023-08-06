@@ -31,14 +31,14 @@ public class TextReference : MonoBehaviour
             timeElapsed += Time.deltaTime;
 
             float progress = timeElapsed / animationDuration;
-            int newGoldValue = Mathf.FloorToInt(Mathf.Lerp(startGoldValue, GoldCounter.instance.Gold, progress));
+            int newGoldValue = Mathf.FloorToInt(Mathf.Lerp(startGoldValue, GoldCounter.instance.levelGold, progress));
 
             goldUIText.text = newGoldValue.ToString();
 
             yield return null;
         }
 
-        goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.Gold).ToString();
+        goldUIText.text = Mathf.FloorToInt(GoldCounter.instance.levelGold).ToString();
     }
     public void Diamond()
     {
