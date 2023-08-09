@@ -9,12 +9,12 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        LoadLevel(currentLevelIndex);
         currentLevelIndex++;
         if (currentLevelIndex > 5)
         {
             currentLevelIndex = 1;
         }
-        LoadLevel(3);
     }
 
     private void LoadLevel(int levelIndex)

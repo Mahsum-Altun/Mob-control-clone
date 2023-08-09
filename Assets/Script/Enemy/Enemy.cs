@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     Transform spawn;
     int index = -1;
     GameObject enemyParent;
-    private Rigidbody rb;
     public float rbSpeed;
     private AudioSource enemySound;
 
@@ -51,15 +50,11 @@ public class Enemy : MonoBehaviour
         {
             GameObject enemySmall1 = Instantiate(small, spawn.transform.position, spawn.transform.rotation);
             enemySmall1.transform.parent = enemyParent.transform;
-            rb = enemySmall1.GetComponent<Rigidbody>();
-            rb.AddRelativeForce(Vector3.forward * rbSpeed);
         }
         for (int i = 0; i < 2; i++)
         {
             GameObject enemyBig1 = Instantiate(big, spawn.transform.position, spawn.transform.rotation);
             enemyBig1.transform.parent = enemyParent.transform;
-            rb = enemyBig1.GetComponent<Rigidbody>();
-            rb.AddRelativeForce(Vector3.forward * rbSpeed);
         }
     }
 }

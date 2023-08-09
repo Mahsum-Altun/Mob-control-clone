@@ -31238,7 +31238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309e6c4a6e6e51e45a91919fc1d76f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 14000000
+  scoreValue: 1c000000190000000f0000000a00000006000000
   small: {fileID: 2218823817794346737, guid: e53be05f71ded48409f116445900a018, type: 3}
   big: {fileID: 2218823817794346737, guid: be4198a03ee16814d8db8db73bed20db, type: 3}
   rbSpeed: 3500

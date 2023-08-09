@@ -5,22 +5,40 @@ using UnityEngine.AI;
 
 public class EnemyTarget : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private GameObject[] enemyDirectionTarget;
-    private Transform[] enemyDirectionTargetTransform;
+    private GameObject[] targets;
+    private Transform[] targetTransforms;
     public ParticleSystem deathParticles;
+    private Rigidbody rb;
+    public float moveSpeed;
+    public float initialSpeed;
+    public float targetSpeed;
+    public float duration;
+    private float distanceThreshold;
+    private Quaternion initialRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("EnemyTriggerControl");
-        agent = GetComponent<NavMeshAgent>();
-        enemyDirectionTarget = GameObject.FindGameObjectsWithTag("EnemyDirectionTarget");
-        enemyDirectionTargetTransform = new Transform[enemyDirectionTarget.Length];
-        for (int i = 0; i < enemyDirectionTarget.Length; i++)
+        rb = GetComponent<Rigidbody>();
+        GameObject[] enemyDirectionTarget = GameObject.FindGameObjectsWithTag("EnemyDirectionTarget");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Small");
+
+        targets = new GameObject[enemyDirectionTarget.Length + enemies.Length];
+        enemyDirectionTarget.CopyTo(targets, 0);
+        enemies.CopyTo(targets, enemyDirectionTarget.Length);
+
+        targetTransforms = new Transform[targets.Length];
+        for (int i = 0; i < targets.Length; i++)
         {
-            enemyDirectionTargetTransform[i] = enemyDirectionTarget[i].transform;
+            targetTransforms[i] = targets[i].transform;
         }
+        moveSpeed = initialSpeed;
+        Invoke("ChangeSpeed", duration);
+        initialRotation = transform.rotation;
+    }
+    void ChangeSpeed()
+    {
+        moveSpeed = targetSpeed;
     }
 
     // Update is called once per frame
@@ -28,7 +46,8 @@ public class EnemyTarget : MonoBehaviour
     {
         ChooseTarget();
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.layer == 6 || gameObject.layer == 3)
         {
@@ -45,32 +64,57 @@ public class EnemyTarget : MonoBehaviour
     public void ChooseTarget()
     {
         float closestTargetDistance = float.MaxValue;
-        NavMeshPath path = null;
-        NavMeshPath shortestPatch = null;
-        for (int i = 0; i < enemyDirectionTargetTransform.Length; i++)
+        Transform selectedTarget = null;
+
+        foreach (Transform target in targetTransforms)
         {
-            if (enemyDirectionTargetTransform[i] == null)
+            if (target == null)
             {
                 continue;
             }
-            path = new NavMeshPath();
-            if (NavMesh.CalculatePath(transform.position, enemyDirectionTargetTransform[i].position, agent.areaMask, path))
+
+            Vector3 targetDirection = target.position - transform.position;
+            targetDirection.y = 0;
+            float distance = targetDirection.magnitude;
+            if (distance < closestTargetDistance)
             {
-                float distance = Vector3.Distance(transform.position, path.corners[0]);
-                for (int j = 1; j < path.corners.Length; j++)
-                {
-                    distance += Vector3.Distance(path.corners[j - 1], path.corners[j]);
-                }
-                if (distance < closestTargetDistance)
-                {
-                    closestTargetDistance = distance;
-                    shortestPatch = path;
-                }
+                closestTargetDistance = distance;
+                selectedTarget = target;
             }
         }
-        if (shortestPatch != null)
+
+        if (selectedTarget != null)
         {
-            agent.SetPath(shortestPatch);
+            Vector3 targetDirection = selectedTarget.position - transform.position;
+            targetDirection.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = targetRotation;
+            Vector3 movementDirection = transform.forward;
+            rb.velocity = movementDirection * moveSpeed * Time.deltaTime;
+        }
+        if (selectedTarget != null)
+        {
+            Vector3 movementDirection = transform.forward;
+            rb.velocity = movementDirection * moveSpeed * Time.deltaTime;
+            if (selectedTarget.gameObject.tag == "EnemyDirectionTarget")
+            {
+                distanceThreshold = 40;
+            }
+            else if (selectedTarget.gameObject.tag == "Small")
+            {
+                distanceThreshold = 10;
+            }
+            if (closestTargetDistance < distanceThreshold)
+            {
+                Vector3 targetDirection = selectedTarget.position - transform.position;
+                targetDirection.y = 0;
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                transform.rotation = targetRotation;
+            }
+            else
+            {
+                transform.rotation = initialRotation;
+            }
         }
     }
     private void DeathWithParticlesSmall()
@@ -88,10 +132,5 @@ public class EnemyTarget : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         Instantiate(deathParticles, transform.position, transform.rotation);
         Destroy(gameObject);
-    }
-    IEnumerator EnemyTriggerControl()
-    {
-        yield return new WaitForSeconds(1f);
-        GetComponent<Collider>().isTrigger = true;
     }
 }

@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309e6c4a6e6e51e45a91919fc1d76f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 0a000000
+  scoreValue: 1c000000190000000f0000000a00000006000000
   small: {fileID: 2218823817794346737, guid: d9a87e54290c0f34d92aad62ea5cea3d, type: 3}
   big: {fileID: 2218823817794346737, guid: a27a5f5a456ffa849a8b12aad56614cb, type: 3}
   rbSpeed: 3500

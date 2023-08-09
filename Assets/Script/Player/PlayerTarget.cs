@@ -6,33 +6,58 @@ using UnityEngine.AI;
 
 public class PlayerTarget : MonoBehaviour
 {
-    private NavMeshAgent agent;
     private GameObject parent;
     public GameObject small;
     public GameObject big;
     public float halfWidth;
     public ParticleSystem deathParticles;
-    private GameObject[] home;
-    private Transform[] homeTransform;
+    private GameObject[] targets;
+    private Transform[] targetTransforms;
     DiamondCounterAnimationLevel DiamondCounterAnimationLevel;
     private AudioSource destroySound;
+    private Animator animator;
+    private Rigidbody rb;
+    public float moveSpeed;
+    public float initialSpeed;
+    public float targetSpeed;
+    public float duration;
+    private float distanceThreshold;
+    private Quaternion initialRotation;
 
     private void Awake()
     {
         GameObject animateDiamond = GameObject.Find("Animate diamond");
         DiamondCounterAnimationLevel = animateDiamond.GetComponent<DiamondCounterAnimationLevel>();
-        home = GameObject.FindGameObjectsWithTag("Home");
-        homeTransform = new Transform[home.Length];
-        for (int i = 0; i < home.Length; i++)
+
+        GameObject[] homes = GameObject.FindGameObjectsWithTag("Home");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        targets = new GameObject[homes.Length + enemies.Length];
+        homes.CopyTo(targets, 0);
+        enemies.CopyTo(targets, homes.Length);
+
+        targetTransforms = new Transform[targets.Length];
+        for (int i = 0; i < targets.Length; i++)
         {
-            homeTransform[i] = home[i].transform;
+            targetTransforms[i] = targets[i].transform;
         }
     }
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         destroySound = GetComponent<AudioSource>();
-        agent = GetComponent<NavMeshAgent>();
         parent = GameObject.Find("Blue And Yellow Parent");
+        if (tag == "Small" || tag == "Big")
+        {
+            moveSpeed = initialSpeed;
+        }
+        Invoke("ChangeSpeed", duration);
+        initialRotation = transform.rotation;
+    }
+    void ChangeSpeed()
+    {
+        moveSpeed = targetSpeed;
     }
     private void Update()
     {
@@ -41,32 +66,48 @@ public class PlayerTarget : MonoBehaviour
     public void ChooseTarget()
     {
         float closestTargetDistance = float.MaxValue;
-        NavMeshPath path = null;
-        NavMeshPath shortestPatch = null;
-        for (int i = 0; i < homeTransform.Length; i++)
+        Transform selectedTarget = null;
+
+        foreach (Transform target in targetTransforms)
         {
-            if (homeTransform[i] == null)
+            if (target == null)
             {
                 continue;
             }
-            path = new NavMeshPath();
-            if (NavMesh.CalculatePath(transform.position, homeTransform[i].position, agent.areaMask, path))
+
+            Vector3 targetDirection = target.position - transform.position;
+            targetDirection.y = 0;
+            float distance = targetDirection.magnitude;
+            if (distance < closestTargetDistance)
             {
-                float distance = Vector3.Distance(transform.position, path.corners[0]);
-                for (int j = 1; j < path.corners.Length; j++)
-                {
-                    distance += Vector3.Distance(path.corners[j - 1], path.corners[j]);
-                }
-                if (distance < closestTargetDistance)
-                {
-                    closestTargetDistance = distance;
-                    shortestPatch = path;
-                }
+                closestTargetDistance = distance;
+                selectedTarget = target;
             }
         }
-        if (shortestPatch != null)
+
+        if (selectedTarget != null)
         {
-            agent.SetPath(shortestPatch);
+            Vector3 movementDirection = transform.forward;
+            rb.velocity = movementDirection * moveSpeed * Time.deltaTime;
+            if (selectedTarget.gameObject.tag == "Home")
+            {
+                distanceThreshold = 40;
+            }
+            else if (selectedTarget.gameObject.tag == "Enemy")
+            {
+                distanceThreshold = 10;
+            }
+            if (closestTargetDistance < distanceThreshold)
+            {
+                Vector3 targetDirection = selectedTarget.position - transform.position;
+                targetDirection.y = 0;
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                transform.rotation = targetRotation;
+            }
+            else
+            {
+                transform.rotation = initialRotation;
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -129,6 +170,9 @@ public class PlayerTarget : MonoBehaviour
             }
 
         }
+    }
+    private void OnCollisionEnter(Collision other)
+    {
         if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Enemy Big")
         {
             GoldCounter.instance.levelGold++;
