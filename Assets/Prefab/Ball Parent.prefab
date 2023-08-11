@@ -904,7 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transtoMove: {fileID: 6237844700355087885}
-  speedModifier: 0.5
+  speedModifier: 2
   xMin: -15
   xMax: 15
   localMovement: 1

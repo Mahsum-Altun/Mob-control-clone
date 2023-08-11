@@ -7,6 +7,7 @@ public class ObjectColorChange : MonoBehaviour
     private GameObject topCube;
     public float cubeSpeed;
     public PrefabData prefabData;
+    public bool cubeMove = false;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class ObjectColorChange : MonoBehaviour
 
     public void CubeMovement()
     {
-        prefabData.currentPosition.y += 0.001f * cubeSpeed * Time.deltaTime;
+        prefabData.currentPosition.y += 0.004f;
         topCube.transform.position = prefabData.currentPosition;
     }
 }

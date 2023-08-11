@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.008407573, g: 0.33398405, b: 0.24804728, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -961,6 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeSpeed: 100
   prefabData: {fileID: 11400000, guid: 8bbf0c5ffd8a88342bc2d79be756789c, type: 2}
+  cubeMove: 0
 --- !u!1 &1203557013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,6 +2267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CFX3_MagicAura_B_Runic main menu light
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2284,11 +2289,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 530.9485
+      value: 554
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1145.2137
+      value: 1192
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2321,6 +2326,18 @@ PrefabInstance:
     - target: {fileID: 400006, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
+      propertyPath: RotationModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
+      propertyPath: RotationModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeed1a3d832a0ac4fb15b248b0b49f8a, type: 3}

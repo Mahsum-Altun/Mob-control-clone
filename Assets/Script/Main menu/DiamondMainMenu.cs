@@ -44,20 +44,25 @@ public class DiamondMainMenu : MonoBehaviour
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Diamond target"))
         {
-            if (Input.GetMouseButton(0))
+            if (Input.touchCount > 0)
             {
-                if (DiamondCounter.instance.Diamonds > 0)
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
                 {
-                    diamondCounterAnimationMainMenu.AddDiamondMainMenu();
-                    if (soundControl == false)
+
+                    if (DiamondCounter.instance.Diamonds > 0)
                     {
-                        diamondTouchSound.Play();
-                        soundControl = true;
+                        diamondCounterAnimationMainMenu.AddDiamondMainMenu();
+                        if (soundControl == false)
+                        {
+                            diamondTouchSound.Play();
+                            soundControl = true;
+                        }
                     }
-                }
-                else
-                {
-                    DiamondCounter.instance.Diamonds = 0;
+                    else
+                    {
+                        DiamondCounter.instance.Diamonds = 0;
+                    }
                 }
             }
             else
