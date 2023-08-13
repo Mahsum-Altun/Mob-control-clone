@@ -193,8 +193,8 @@ public class PlayerTarget : MonoBehaviour
     {
         yield return null;
         GameObject mySmall1 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
-        GameObject mySmall2 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
-        GameObject mySmall3 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
+        GameObject mySmall2 = Instantiate(small, new Vector3(mySmall1.transform.position.x, mySmall1.transform.position.y, mySmall1.transform.position.z + halfWidth), mySmall1.transform.rotation);
+        GameObject mySmall3 = Instantiate(small, new Vector3(mySmall2.transform.position.x, mySmall2.transform.position.y, mySmall2.transform.position.z + halfWidth), mySmall2.transform.rotation);
         mySmall1.transform.parent = parent.transform;
         mySmall1.tag = "Small No X";
         mySmall2.transform.parent = parent.transform;
@@ -206,8 +206,8 @@ public class PlayerTarget : MonoBehaviour
     {
         yield return null;
         GameObject myBig1 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
-        GameObject myBig2 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
-        GameObject myBig3 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
+        GameObject myBig2 = Instantiate(big, new Vector3(myBig1.transform.position.x, myBig1.transform.position.y, myBig1.transform.position.z + halfWidth), myBig1.transform.rotation);
+        GameObject myBig3 = Instantiate(big, new Vector3(myBig2.transform.position.x, myBig2.transform.position.y, myBig2.transform.position.z + halfWidth), myBig2.transform.rotation);
         myBig1.transform.parent = parent.transform;
         myBig1.tag = "Big No X";
         myBig2.transform.parent = parent.transform;
@@ -219,7 +219,7 @@ public class PlayerTarget : MonoBehaviour
     {
         yield return null;
         GameObject mySmall1 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
-        GameObject mySmall2 = Instantiate(small, new Vector3(small.transform.position.x, small.transform.position.y, small.transform.position.z + halfWidth), small.transform.rotation);
+        GameObject mySmall2 = Instantiate(small, new Vector3(mySmall1.transform.position.x, mySmall1.transform.position.y, mySmall1.transform.position.z + halfWidth), mySmall1.transform.rotation);
         mySmall1.transform.parent = parent.transform;
         mySmall1.tag = "Small No X";
         mySmall2.transform.parent = parent.transform;
@@ -229,7 +229,7 @@ public class PlayerTarget : MonoBehaviour
     {
         yield return null;
         GameObject myBig1 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
-        GameObject myBig2 = Instantiate(big, new Vector3(big.transform.position.x, big.transform.position.y, big.transform.position.z + halfWidth), big.transform.rotation);
+        GameObject myBig2 = Instantiate(big, new Vector3(myBig1.transform.position.x, myBig1.transform.position.y, myBig1.transform.position.z + halfWidth), myBig1.transform.rotation);
         myBig1.transform.parent = parent.transform;
         myBig1.tag = "Big No X";
         myBig2.transform.parent = parent.transform;
